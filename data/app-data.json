@@ -1,0 +1,301 @@
+{
+  "evidence": [
+    {
+      "id": "j8jhlaad",
+      "fileName": "Management Strcuture.docx",
+      "documentType": "Unclassified",
+      "businessUnit": "Unassigned",
+      "periodStart": "2026-07-12T09:39:43.757Z",
+      "periodEnd": "2026-07-12T09:39:43.757Z",
+      "status": "extracted",
+      "uploadedBy": "Priya Nair",
+      "uploadedAt": "2026-07-12T09:39:43.757Z",
+      "fileSizeKb": 13,
+      "contentHash": "0468e6bbcf0225e8695ab581d77a7bff174dbf13ae58ac4ee6d741e714ab100d"
+    },
+    {
+      "id": "rw9rq5jn",
+      "fileName": "01_water_utility_bill.pdf",
+      "documentType": "Utility Bill",
+      "businessUnit": "Unassigned",
+      "periodStart": "2026-07-12T09:38:35.908Z",
+      "periodEnd": "2026-07-12T09:38:35.908Z",
+      "status": "extracted",
+      "uploadedBy": "Priya Nair",
+      "uploadedAt": "2026-07-12T09:38:35.908Z",
+      "fileSizeKb": 0,
+      "contentHash": "5bf701e93c013716217847b55fdeebed496452cd3e26b3fe7a359deae7fda7a8"
+    }
+  ],
+  "dataPoints": [],
+  "gaps": [],
+  "frameworks": [
+    {
+      "id": "seed-cdp-water",
+      "name": "CDP Water Security (representative)",
+      "version": "2026",
+      "items": [
+        {
+          "id": "seed-cdp-gov-1",
+          "code": "GOV-1",
+          "module": "Governance",
+          "text": "Describe the board-level (or equivalent) oversight of water-related risks and opportunities.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Board/committee charter or governance policy document covering water stewardship oversight.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-gov-2",
+          "code": "GOV-2",
+          "module": "Governance",
+          "text": "Describe management's role in assessing and managing water-related issues, including reporting frequency to the board.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Management structure document, meeting minutes, or reporting cadence record.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-risk-1",
+          "code": "RISK-1",
+          "module": "Risk Assessment",
+          "text": "Describe the process used to identify, assess, and prioritize water-related risks across owned and operated assets.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Water risk assessment methodology document or basin risk screening report.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-risk-2",
+          "code": "RISK-2",
+          "module": "Business Impact",
+          "text": "Disclose any substantive water-related risks identified with the potential for significant business impact.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Risk register extract or facility-level water stress assessment.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-strat-1",
+          "code": "STRAT-1",
+          "module": "Business Strategy",
+          "text": "Describe how water-related risks and opportunities have influenced business strategy and financial planning.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Strategy document, capital allocation record, or board presentation referencing water.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-tgt-1",
+          "code": "TGT-1",
+          "module": "Targets",
+          "text": "Disclose water-related targets, including scope, boundary, base year, and target year.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Board-approved target statement or public commitment document.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-tgt-2",
+          "code": "TGT-2",
+          "module": "Targets",
+          "text": "Report progress against active water-related targets for the current reporting period.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Progress report comparing current-period performance to the stated target.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-wa-1",
+          "code": "WA-1",
+          "module": "Water Accounting",
+          "text": "Report total water withdrawal by source for the reporting period.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Water utility bill or meter log covering the reporting period.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-wa-2",
+          "code": "WA-2",
+          "module": "Water Accounting",
+          "text": "Report total water discharge and consumption for the reporting period.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Wastewater discharge record for the reporting period.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-wq-1",
+          "code": "WQ-1",
+          "module": "Water Quality",
+          "text": "Report effluent water quality data and the methodology used to assess pollutant reduction.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Water quality lab report with influent/effluent TSS, Total-N, and Total-P.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-ver-1",
+          "code": "VER-1",
+          "module": "Verification",
+          "text": "Indicate whether reported water figures have received third-party verification or assurance, and to what standard.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Third-party assurance statement or verification certificate.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-eng-1",
+          "code": "ENG-1",
+          "module": "Value Chain Engagement",
+          "text": "Describe engagement with suppliers on water-related requirements or assessments.",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "Supplier water risk assessment or engagement record.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        },
+        {
+          "id": "seed-cdp-eng-2",
+          "code": "ENG-2",
+          "module": "Community Engagement",
+          "text": "Describe engagement with local communities on water access, sanitation, and hygiene (WASH).",
+          "status": "unmapped",
+          "linkedDataPointIds": [],
+          "linkedEvidenceIds": [],
+          "requiredEvidenceHint": "WASH access record or community engagement report.",
+          "draftAnswer": null,
+          "draftCitations": null,
+          "draftApprovedBy": null,
+          "draftApprovedAt": null
+        }
+      ]
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "hfnpudzg",
+      "timestamp": "2026-07-12T09:39:43.990Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "Management Strcuture.docx",
+      "details": "Document text was read successfully but contains no recognized quantitative field."
+    },
+    {
+      "id": "2a47adrm",
+      "timestamp": "2026-07-12T09:39:43.990Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "Management Strcuture.docx",
+      "details": "13 KB"
+    },
+    {
+      "id": "vehl3hgz",
+      "timestamp": "2026-07-12T09:38:35.923Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "01_water_utility_bill.pdf",
+      "details": "Document text was read successfully but contains no recognized quantitative field."
+    },
+    {
+      "id": "8ke2quiu",
+      "timestamp": "2026-07-12T09:38:35.923Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "01_water_utility_bill.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "7iukp6s6",
+      "timestamp": "2026-07-12T09:38:26.888Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "site_baseline_set",
+      "entityType": "site",
+      "entityLabel": "ypi7kvij",
+      "details": "Employees: 200, Avg family size: 5, Baseline Replenishment Needed: 137000 L"
+    },
+    {
+      "id": "7narjx8j",
+      "timestamp": "2026-07-12T09:38:21.894Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "site_created",
+      "entityType": "site",
+      "entityLabel": "Riverton"
+    }
+  ],
+  "sites": [
+    {
+      "id": "ypi7kvij",
+      "name": "Riverton",
+      "basinName": "Basin",
+      "storeManagerEmail": null,
+      "baseline": {
+        "employeeCount": 200,
+        "avgFamilySize": 5,
+        "baselineReplenishmentNeededL": 137000,
+        "setBy": "Priya Nair",
+        "setAt": "2026-07-12T09:38:26.888Z"
+      },
+      "createdAt": "2026-07-12T09:38:21.894Z"
+    }
+  ],
+  "questionnaireFields": []
+}

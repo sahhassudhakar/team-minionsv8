@@ -1,0 +1,11 @@
+[
+  {
+    "id": "bootstrap-admin",
+    "email": "admin@teamminions.ai",
+    "passwordHash": "$2b$10$dpktyG/eCZznxnwUu9KuY.7A/JuZeiHkk0VkLAfA.xl1vfsf6Dfm2",
+    "name": "Priya Nair",
+    "role": "admin",
+    "siteId": null,
+    "createdAt": "2026-07-12T09:36:58.411Z"
+  }
+]

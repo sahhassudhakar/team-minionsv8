@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --bg-surface-sunken: #F4F5F7;
+  --border-subtle: #E5E7EB;
+  --border-strong: #D1D5DB;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+  --accent-primary: #4F46E5;
+  --accent-primary-hover: #4338CA;
+  --status-verified: #059669;
+  --status-verified-bg: #ECFDF5;
+  --status-proposed: #D97706;
+  --status-proposed-bg: #FFFBEB;
+  --status-insufficient: #DC2626;
+  --status-insufficient-bg: #FEF2F2;
+  --status-neutral: #6B7280;
+  --status-neutral-bg: #F3F4F6;
+  --ai-advisory: #7C3AED;
+  --ai-advisory-bg: #F5F3FF;
+}
+
+@theme inline {
+  --color-bg-canvas: var(--bg-canvas);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-sunken: var(--bg-surface-sunken);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-status-verified: var(--status-verified);
+  --color-status-verified-bg: var(--status-verified-bg);
+  --color-status-proposed: var(--status-proposed);
+  --color-status-proposed-bg: var(--status-proposed-bg);
+  --color-status-insufficient: var(--status-insufficient);
+  --color-status-insufficient-bg: var(--status-insufficient-bg);
+  --color-status-neutral: var(--status-neutral);
+  --color-status-neutral-bg: var(--status-neutral-bg);
+  --color-ai-advisory: var(--ai-advisory);
+  --color-ai-advisory-bg: var(--ai-advisory-bg);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
