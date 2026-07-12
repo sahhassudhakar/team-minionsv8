@@ -21,7 +21,7 @@ import type { FrameworkItem } from "@/lib/types";
 type PendingAction = { itemId: string; kind: "generate" | "approve" } | null;
 
 const STATUS_TONE = { ready: "confirmed", pending: "attention", unmapped: "neutral" } as const;
-const STATUS_LABEL = { ready: "Ready", pending: "Draft pending approval", unmapped: "No evidence" } as const;
+const STATUS_LABEL = { ready: "Ready", pending: "Draft pending approval", unmapped: "Insufficient Evidence" } as const;
 
 type FilterMode = "all" | "not_ready" | "ready";
 
@@ -29,6 +29,8 @@ export default function CDPPage() {
   const user = useAuthStore((s) => s.user);
   const frameworks = useAppStore((s) => s.frameworks);
   const evidence = useAppStore((s) => s.evidence);
+  const dataPoints = useAppStore((s) => s.dataPoints);
+  const questionnaireFields = useAppStore((s) => s.questionnaireFields);
   const linkEvidenceToItem = useAppStore((s) => s.linkEvidenceToItem);
   const unlinkEvidenceFromItem = useAppStore((s) => s.unlinkEvidenceFromItem);
   const generateDraftAnswer = useAppStore((s) => s.generateDraftAnswer);
@@ -116,7 +118,7 @@ export default function CDPPage() {
               <TooltipContent>
                 This reflects evidence completeness and approved-draft coverage only. It is <strong>not</strong> an
                 official CDP score — CDP alone determines the official disclosure grade. A question counts as
-                "ready" only once an Admin has approved a draft built from real cited evidence.
+                &quot;ready&quot; only once an Admin has approved a draft built from real cited evidence.
               </TooltipContent>
             </Tooltip>
           </div>
@@ -174,6 +176,8 @@ export default function CDPPage() {
       <LinkEvidenceModal
         item={linkModalItem}
         evidence={evidence}
+        dataPoints={dataPoints}
+        questionnaireFields={questionnaireFields}
         open={linkModalItem != null}
         onOpenChange={(v) => !v && setLinkModalItem(null)}
         onLink={(evId) => {
@@ -250,7 +254,7 @@ function CdpItemCard({
       {hasNoEvidence ? (
         <div className="mt-3 flex items-center justify-between gap-2 rounded-md border border-status-insufficient/30 bg-status-insufficient-bg px-3 py-2">
           <p className="text-xs text-text-secondary">
-            <span className="font-medium text-status-insufficient">No evidence.</span> Needed:{" "}
+            <span className="font-medium text-status-insufficient">Insufficient Evidence.</span> Needed:{" "}
             {item.requiredEvidenceHint}
           </p>
           {isAdmin ? (
@@ -266,16 +270,34 @@ function CdpItemCard({
       ) : (
         <>
           <div className="mt-3 flex flex-wrap gap-1.5">
-            {linkedEvidence.map((ev) => (
-              <span key={ev!.id} className="flex items-center gap-1 rounded-md bg-bg-surface-sunken px-2 py-1 text-xs text-text-secondary">
-                <FileText className="size-3" /> {ev!.fileName}
-                {isAdmin && (
-                  <button onClick={() => onUnlinkEvidence(ev!.id)} className="ml-1 text-text-tertiary hover:text-status-insufficient">
-                    <X className="size-3" />
-                  </button>
-                )}
-              </span>
-            ))}
+            {linkedEvidence.map((ev) => {
+              const wasAutoLinked = item.autoLinkedEvidenceIds?.includes(ev!.id);
+              return (
+                <span
+                  key={ev!.id}
+                  className={cn(
+                    "flex items-center gap-1 rounded-md px-2 py-1 text-xs text-text-secondary",
+                    wasAutoLinked ? "bg-ai-advisory-bg" : "bg-bg-surface-sunken"
+                  )}
+                >
+                  {wasAutoLinked ? <Sparkles className="size-3 text-ai-advisory" /> : <FileText className="size-3" />}
+                  {ev!.fileName}
+                  {wasAutoLinked && (
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <span className="rounded-full bg-ai-advisory/15 px-1.5 text-[10px] font-medium text-ai-advisory">Auto</span>
+                      </TooltipTrigger>
+                      <TooltipContent>Attached automatically — matched on document metadata and/or extracted content, no manual linking required.</TooltipContent>
+                    </Tooltip>
+                  )}
+                  {isAdmin && (
+                    <button onClick={() => onUnlinkEvidence(ev!.id)} className="ml-1 text-text-tertiary hover:text-status-insufficient">
+                      <X className="size-3" />
+                    </button>
+                  )}
+                </span>
+              );
+            })}
             {isAdmin && (
               <button onClick={onLinkEvidence} className="text-xs font-medium text-accent-primary hover:underline">
                 + Add more
@@ -377,18 +399,22 @@ function CdpItemCard({
 function LinkEvidenceModal({
   item,
   evidence,
+  dataPoints,
+  questionnaireFields,
   open,
   onOpenChange,
   onLink,
 }: {
   item: FrameworkItem | null;
   evidence: ReturnType<typeof useAppStore.getState>["evidence"];
+  dataPoints: ReturnType<typeof useAppStore.getState>["dataPoints"];
+  questionnaireFields: ReturnType<typeof useAppStore.getState>["questionnaireFields"];
   open: boolean;
   onOpenChange: (v: boolean) => void;
   onLink: (evidenceId: string) => void;
 }) {
   if (!item) return null;
-  const suggested = suggestEvidenceForItem(item, evidence);
+  const suggested = suggestEvidenceForItem(item, evidence, dataPoints, questionnaireFields);
   const suggestedIds = new Set(suggested.map((e) => e.id));
   const rest = evidence.filter((e) => !suggestedIds.has(e.id));
 

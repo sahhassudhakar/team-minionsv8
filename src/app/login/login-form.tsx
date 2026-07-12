@@ -79,7 +79,7 @@ export function LoginForm() {
                 First run only: a bootstrap Admin account exists at{" "}
                 <span className="font-mono text-text-primary">admin@teamminions.ai</span> /{" "}
                 <span className="font-mono text-text-primary">ChangeMe123!</span> — sign in and create
-                real Auditor and Store Manager accounts (with a site assignment) under Admin → Users.
+                real Auditor and Floor Manager accounts (with a site assignment) under Admin → Users.
                 Change this password immediately in a real deployment.
               </span>
             </div>

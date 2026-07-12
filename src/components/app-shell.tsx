@@ -21,7 +21,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   // The application data (evidence, sites, questionnaire fields, ...) now
   // lives server-side and is shared across every device/session. Polling
-  // keeps an Admin's screen current when a Store Manager uploads something
+  // keeps an Admin's screen current when a Floor Manager uploads something
   // from a different browser, without needing a full websocket layer.
   useEffect(() => {
     if (!user) return;

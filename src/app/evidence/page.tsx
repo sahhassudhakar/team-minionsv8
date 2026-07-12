@@ -71,10 +71,15 @@ export default function EvidencePage() {
   const [uploadOpen, setUploadOpen] = useState(false);
   const canUpload = user?.role === "admin" || user?.role === "store_manager";
   const isStoreManager = user?.role === "store_manager";
+  const isAdmin = user?.role === "admin";
 
-  const handleUploaded = async (files: File[], waterContext?: { siteId: string; categoryIds: string[] }) => {
+  const handleUploaded = async (
+    files: File[],
+    waterContext?: { siteId: string; categoryIds: string[] },
+    adminContext?: { siteId: string; documentTypes: string[] }
+  ) => {
     if (!user) return;
-    await uploadEvidence(files, { name: user.name, role: user.role }, waterContext);
+    await uploadEvidence(files, { name: user.name, role: user.role }, waterContext, adminContext);
   };
 
   return (
@@ -87,6 +92,7 @@ export default function EvidencePage() {
             <Button
               onClick={() => setUploadOpen(true)}
               disabled={isStoreManager && sites.length === 0}
+              title={isAdmin && sites.length === 0 ? "You can still upload company-wide evidence with no site attached." : undefined}
             >
               <Plus className="size-4" /> Upload Evidence
             </Button>
@@ -214,7 +220,7 @@ export default function EvidencePage() {
           onOpenChange={setUploadOpen}
           onUploaded={handleUploaded}
           sites={sites}
-          requireWaterContext={isStoreManager}
+          mode={isStoreManager ? "water" : "generic"}
           defaultSiteId={sites.find((s) => s.storeManagerEmail === user?.email)?.id}
         />
       )}

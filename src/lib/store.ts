@@ -8,6 +8,7 @@ import type {
   Framework,
   FrameworkItem,
   AuditLogEntry,
+  ReportRecord,
 } from "./types";
 import type { Site, QuestionnaireField } from "./water-types";
 
@@ -27,6 +28,7 @@ interface AppDataShape {
   auditLog: AuditLogEntry[];
   sites: Site[];
   questionnaireFields: QuestionnaireField[];
+  reports: ReportRecord[];
 }
 
 type Actor = { name: string; role: string };
@@ -46,15 +48,22 @@ interface AppState extends AppDataShape {
   assignStoreManagerToSite: (siteId: string, email: string) => void; // handled server-side during user creation; kept as a no-op for API-compat
 
   /** categoryIds, when present, must be the same length as files — categoryIds[i] is the document category for files[i]. */
-  uploadEvidence: (files: File[], actor: Actor, waterContext?: { siteId: string; categoryIds: string[] }) => Promise<void>;
+  uploadEvidence: (
+    files: File[],
+    actor: Actor,
+    waterContext?: { siteId: string; categoryIds: string[] },
+    adminContext?: { siteId: string; documentTypes: string[] }
+  ) => Promise<void>;
 
   verifyDataPoint: (id: string, actor: Actor, correctedValue?: number) => Promise<void>;
   rejectDataPoint: (id: string, actor: Actor, reason: string) => Promise<void>;
   saveManualEntry: (id: string, value: number, unit: string, actor: Actor) => Promise<void>;
 
-  validateQuestionnaireField: (fieldId: string, actor: Actor) => Promise<void>;
+  validateQuestionnaireField: (fieldId: string, actor: Actor, correctedValue?: number) => Promise<void>;
   rejectQuestionnaireField: (fieldId: string, actor: Actor, reason: string) => Promise<void>;
   saveQuestionnaireFieldManually: (fieldId: string, value: number, actor: Actor) => Promise<void>;
+  bulkValidateQuestionnaireFields: (fieldIds: string[], actor: Actor, edits?: Record<string, number>) => Promise<void>;
+  bulkRejectQuestionnaireFields: (fieldIds: string[], actor: Actor, reason: string) => Promise<void>;
 
   addFramework: (name: string, version: string, actor: Actor) => Promise<string>;
   addFrameworkItem: (
@@ -70,6 +79,17 @@ interface AppState extends AppDataShape {
   approveDraftAnswer: (frameworkId: string, itemId: string, actor: Actor) => Promise<void>;
 
   resolveGap: (gapId: string, actor: Actor) => Promise<void>;
+
+  saveReport: (
+    kind: "pwi" | "cdp",
+    title: string,
+    html: string,
+    summary: Record<string, string>,
+    actor: Actor,
+    replaceId?: string
+  ) => Promise<string>;
+  deleteReport: (reportId: string, actor: Actor) => Promise<void>;
+  reconcileCdpAutoLinks: (actor: Actor) => Promise<void>;
 
   resetDemoData: () => Promise<void>;
 }
@@ -93,6 +113,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
   auditLog: [],
   sites: [],
   questionnaireFields: [],
+  reports: [],
   loaded: false,
 
   fetchAll: async () => {
@@ -127,7 +148,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
 
   assignStoreManagerToSite: () => {}, // performed server-side by /api/admin/users on account creation
 
-  uploadEvidence: async (files, actor, waterContext) => {
+  uploadEvidence: async (files, actor, waterContext, adminContext) => {
     // All files ride in one multipart request (repeated "file" fields) —
     // one round trip for the whole batch instead of one request per file.
     const form = new FormData();
@@ -138,6 +159,12 @@ export const useAppStore = create<AppState>()((set, get) => ({
       // fields above — each document in a mixed batch gets extracted
       // against its own category rather than one category for everything.
       form.append("categoryIds", JSON.stringify(waterContext.categoryIds));
+    }
+    if (adminContext) {
+      if (adminContext.siteId) form.append("siteId", adminContext.siteId);
+      // Plain classification labels, one per file — sets documentType only,
+      // does not select a PWI extraction category.
+      form.append("documentTypes", JSON.stringify(adminContext.documentTypes));
     }
     const res = await fetch("/api/data/upload", { method: "POST", body: form });
     const json = await res.json();
@@ -170,8 +197,8 @@ export const useAppStore = create<AppState>()((set, get) => ({
     set(data);
   },
 
-  validateQuestionnaireField: async (fieldId, actor) => {
-    const data = await postAction("validateQuestionnaireField", { id: fieldId, actor });
+  validateQuestionnaireField: async (fieldId, actor, correctedValue) => {
+    const data = await postAction("validateQuestionnaireField", { id: fieldId, actor, correctedValue });
     set(data);
   },
   rejectQuestionnaireField: async (fieldId, actor, reason) => {
@@ -180,6 +207,14 @@ export const useAppStore = create<AppState>()((set, get) => ({
   },
   saveQuestionnaireFieldManually: async (fieldId, value, actor) => {
     const data = await postAction("saveQuestionnaireFieldManually", { id: fieldId, value, actor });
+    set(data);
+  },
+  bulkValidateQuestionnaireFields: async (fieldIds, actor, edits) => {
+    const data = await postAction("bulkValidateQuestionnaireFields", { fieldIds, actor, edits });
+    set(data);
+  },
+  bulkRejectQuestionnaireFields: async (fieldIds, actor, reason) => {
+    const data = await postAction("bulkRejectQuestionnaireFields", { fieldIds, reason, actor });
     set(data);
   },
 
@@ -224,6 +259,26 @@ export const useAppStore = create<AppState>()((set, get) => ({
 
   resolveGap: async (gapId, actor) => {
     const data = await postAction("resolveGap", { gapId, actor });
+    set(data);
+  },
+
+  saveReport: async (kind, title, html, summary, actor, replaceId) => {
+    const res = await fetch("/api/data/action", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "saveReport", payload: { kind, title, html, summary, actor, replaceId } }),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error ?? "Could not save report.");
+    set(json.data);
+    return json.reportId as string;
+  },
+  deleteReport: async (reportId, actor) => {
+    const data = await postAction("deleteReport", { reportId, actor });
+    set(data);
+  },
+  reconcileCdpAutoLinks: async (actor) => {
+    const data = await postAction("reconcileCdpAutoLinks", { actor });
     set(data);
   },
 

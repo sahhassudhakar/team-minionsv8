@@ -98,6 +98,10 @@ export interface FrameworkItem {
   linkedDataPointIds: string[];
   /** Evidence documents cited generally (e.g. narrative/policy docs with no structured data point). */
   linkedEvidenceIds: string[];
+  /** Subset of linkedEvidenceIds that were attached automatically (see cdp-engine.ts) rather than by a human — drives the "Auto-attached" badge and lets it stay distinguishable from a manually confirmed citation. */
+  autoLinkedEvidenceIds?: string[];
+  /** Evidence ids a human explicitly unlinked from this item — excluded from future auto-link passes so an unlink sticks instead of being silently re-applied on the next upload/report/open. */
+  excludedFromAutoLink?: string[];
   /** What kind of document would satisfy this item — shown in the "upload evidence" alert. */
   requiredEvidenceHint: string;
   /** Deterministically assembled from real linked evidence — never invented. Null until evidence is linked. Kept as a flat string for callers (e.g. roadmap readiness checks) that only need to know a draft exists. */
@@ -121,6 +125,26 @@ export interface AdvisoryRecommendation {
   text: string;
   basedOn: string; // e.g. "Gap Analysis dated Jul 10, 2026"
   relatedGapIds: string[];
+}
+
+export type ReportKind = "pwi" | "cdp";
+
+/**
+ * A persisted, generated report — the "PWI Assessment Reports" / "CDP
+ * Assessment Reports" list on the Reports page reads from these instead of
+ * a report only existing transiently in one browser tab's state.
+ */
+export interface ReportRecord {
+  id: string;
+  kind: ReportKind;
+  title: string;
+  status: "generated" | "failed";
+  generatedAt: string;
+  generatedBy: string;
+  /** Full, self-contained report HTML — what Preview/Download render. */
+  html: string;
+  /** Small set of headline stats shown in the list row without opening the report (e.g. portfolio score, predicted CDP band). */
+  summary: Record<string, string>;
 }
 
 export type UserRole = "admin" | "auditor" | "store_manager";

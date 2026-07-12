@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (session.role !== "admin" && session.role !== "store_manager") {
-    return NextResponse.json({ error: "Forbidden — only Admin or Store Manager can upload evidence." }, { status: 403 });
+    return NextResponse.json({ error: "Forbidden — only Admin or Floor Manager can upload evidence." }, { status: 403 });
   }
 
   const form = await request.formData();
@@ -40,6 +40,20 @@ export async function POST(request: Request) {
     }
   }
 
+  // Plain classification labels for the generic (Admin) upload flow — one
+  // per file, aligned by index like categoryIds above, but these only set
+  // EvidenceObject.documentType; they never select a PWI extraction path.
+  const documentTypesRaw = form.get("documentTypes") as string | null;
+  let documentTypes: unknown[] = [];
+  if (documentTypesRaw) {
+    try {
+      const parsed = JSON.parse(documentTypesRaw);
+      if (Array.isArray(parsed)) documentTypes = parsed;
+    } catch {
+      return NextResponse.json({ error: "Malformed document type selection." }, { status: 400 });
+    }
+  }
+
   if (files.length === 0) return NextResponse.json({ error: "No file provided." }, { status: 400 });
   if (files.length > MAX_FILES_PER_UPLOAD) {
     return NextResponse.json(
@@ -56,6 +70,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "A document category is required for every file." }, { status: 400 });
     }
   }
+  if (session.role === "admin" && documentTypesRaw != null) {
+    if (documentTypes.length !== files.length || documentTypes.some((c) => typeof c !== "string" || !c)) {
+      return NextResponse.json({ error: "A document type is required for every file." }, { status: 400 });
+    }
+  }
 
   const results: FileUploadResult[] = [];
   let data;
@@ -68,9 +87,11 @@ export async function POST(request: Request) {
     const file = files[i];
     const categoryId = typeof categoryIds[i] === "string" ? (categoryIds[i] as string) : null;
     const waterContext = siteId && categoryId ? { siteId, categoryId } : undefined;
+    const documentType = typeof documentTypes[i] === "string" ? (documentTypes[i] as string) : null;
+    const adminContext = !waterContext && documentType ? { siteId: siteId ?? undefined, documentType } : undefined;
     try {
       const bytes = new Uint8Array(await file.arrayBuffer());
-      data = await uploadEvidence(file.name, bytes, { name: session.name, role: session.role }, waterContext);
+      data = await uploadEvidence(file.name, bytes, { name: session.name, role: session.role }, waterContext, adminContext);
       results.push({ fileName: file.name, ok: true });
     } catch (err) {
       results.push({ fileName: file.name, ok: false, error: err instanceof Error ? err.message : "Upload failed." });

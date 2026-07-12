@@ -53,7 +53,7 @@ export interface Site {
   createdAt: string;
 }
 
-/** Every questionnaire field a Store Manager's evidence can fill. Field IDs are stable strings used by the auto-fill mapper. */
+/** Every questionnaire field a Floor Manager's evidence can fill. Field IDs are stable strings used by the auto-fill mapper. */
 export type QuestionnaireFieldId =
   | "freshwater_withdrawal_l"
   | "wastewater_discharged_l"

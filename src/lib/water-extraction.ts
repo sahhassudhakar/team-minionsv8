@@ -2,10 +2,10 @@ import type { QuestionnaireFieldId } from "./water-types";
 import { extractPdfLines, hasHedgeNearby, extractDocxText, extractXlsxAsCsvText, extractPptxText, extractImageText } from "./extraction";
 
 /**
- * The document categories a Store Manager chooses from when uploading
+ * The document categories a Floor Manager chooses from when uploading
  * evidence, and which questionnaire field(s) each category is capable of
  * auto-filling. This is the taxonomy referenced on the Evidence page so
- * a Store Manager knows what to upload to build a complete PWI report.
+ * a Floor Manager knows what to upload to build a complete PWI report.
  */
 export interface DocumentCategory {
   id: string;
@@ -75,6 +75,30 @@ export const DOCUMENT_CATEGORIES: DocumentCategory[] = [
     description: "People given water, sanitation, and hygiene access in the sub-basin or basin.",
     feedsFields: ["p2_wash_people", "p3_wash_people"],
   },
+];
+
+/**
+ * Generic document types offered to Admins uploading evidence outside the
+ * Floor Manager's site-specific PWI flow (e.g. company-wide CDP Water
+ * Security evidence — governance charters, risk methodologies, disclosures).
+ * These are plain classification labels, not tied to a PWI field-extraction
+ * category — picking one only sets EvidenceObject.documentType, it does not
+ * change which extraction path runs.
+ */
+export const ADMIN_DOCUMENT_TYPES: string[] = [
+  "Board / Governance Policy",
+  "Risk Assessment Methodology",
+  "Corporate Water Strategy Document",
+  "Water Targets & Goals Document",
+  "Water Accounting Data (Withdrawal / Discharge / Consumption)",
+  "Water Quality Report",
+  "Third-Party Verification / Assurance Statement",
+  "Stakeholder / Value Chain Engagement Report",
+  "Utility Bill",
+  "Supplier Invoice",
+  "Policy Document",
+  "Tabular Dataset",
+  "Other Supporting Document",
 ];
 
 export interface ExtractedField {

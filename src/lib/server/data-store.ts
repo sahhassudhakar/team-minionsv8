@@ -10,6 +10,7 @@ import type {
   DraftCitation,
   AuditLogEntry,
   UserRole,
+  ReportRecord,
 } from "@/lib/types";
 import type { Site, QuestionnaireField, QuestionnaireFieldId } from "@/lib/water-types";
 import { QUESTIONNAIRE_FIELD_META } from "@/lib/water-types";
@@ -24,6 +25,7 @@ import {
   DOCUMENT_CATEGORIES,
 } from "@/lib/water-extraction";
 import { buildDefaultCdpFramework } from "@/lib/cdp-seed";
+import { eligibleEvidenceForAutoLink, scoreEvidenceForItem, buildKeywordWeights, AUTO_LINK_THRESHOLD } from "@/lib/cdp-engine";
 
 /**
  * Real, shared, server-side application state — the whole point of this
@@ -43,6 +45,7 @@ export interface AppData {
   auditLog: AuditLogEntry[];
   sites: Site[];
   questionnaireFields: QuestionnaireField[];
+  reports: ReportRecord[];
 }
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -58,6 +61,7 @@ function emptyData(): AppData {
     auditLog: [],
     sites: [],
     questionnaireFields: [],
+    reports: [],
   };
 }
 
@@ -128,7 +132,11 @@ function readData(): AppData {
     fs.writeFileSync(DATA_FILE, JSON.stringify(fresh, null, 2));
     return fresh;
   }
-  return JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+  const parsed = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+  // Backfill fields added after this data file may have been created —
+  // avoids a hard crash for anyone with an existing app-data.json.
+  if (!Array.isArray(parsed.reports)) parsed.reports = [];
+  return parsed as AppData;
 }
 
 function writeData(data: AppData) {
@@ -227,7 +235,8 @@ export async function uploadEvidence(
   fileName: string,
   bytes: Uint8Array,
   actor: Actor,
-  waterContext?: { siteId: string; categoryId: string }
+  waterContext?: { siteId: string; categoryId: string },
+  adminContext?: { siteId?: string; documentType: string }
 ): Promise<AppData> {
   const now = new Date().toISOString();
   const evidenceId = id();
@@ -253,8 +262,12 @@ export async function uploadEvidence(
       const evidence: EvidenceObject = {
         id: evidenceId,
         fileName,
-        documentType: stillExists?.documentType ?? guessDocumentType(fileName),
-        businessUnit: waterContext ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned" : "Unassigned",
+        documentType: stillExists?.documentType ?? adminContext?.documentType ?? guessDocumentType(fileName),
+        businessUnit: waterContext
+          ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned"
+          : adminContext?.siteId
+            ? data.sites.find((s) => s.id === adminContext.siteId)?.name ?? "Unassigned"
+            : "Unassigned",
         periodStart: now,
         periodEnd: now,
         status: "duplicate",
@@ -465,7 +478,11 @@ export async function uploadEvidence(
         id: evidenceId,
         fileName,
         documentType: raceMatch.documentType,
-        businessUnit: waterContext ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned" : "Unassigned",
+        businessUnit: waterContext
+          ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned"
+          : adminContext?.siteId
+            ? data.sites.find((s) => s.id === adminContext.siteId)?.name ?? "Unassigned"
+            : "Unassigned",
         periodStart: now,
         periodEnd: now,
         status: "duplicate",
@@ -493,8 +510,12 @@ export async function uploadEvidence(
       fileName,
       documentType: waterContext
         ? DOCUMENT_CATEGORIES.find((c) => c.id === waterContext.categoryId)?.label ?? guessDocumentType(fileName)
-        : guessDocumentType(fileName),
-      businessUnit: waterContext ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned" : "Unassigned",
+        : adminContext?.documentType ?? guessDocumentType(fileName),
+      businessUnit: waterContext
+        ? data.sites.find((s) => s.id === waterContext.siteId)?.name ?? "Unassigned"
+        : adminContext?.siteId
+          ? data.sites.find((s) => s.id === adminContext.siteId)?.name ?? "Unassigned"
+          : "Unassigned",
       periodStart: now,
       periodEnd: now,
       status: "queued_for_extraction",
@@ -547,6 +568,11 @@ export async function uploadEvidence(
         logAction(data, { actorName: actor.name, actorRole: actor.role, action: "processing_failed", entityType: "evidence", entityLabel: fileName, details: pending.message });
         break;
     }
+
+    // Trigger: "New evidence is uploaded" — reconcile CDP auto-links in the
+    // same atomic commit as the upload itself.
+    autoLinkEvidenceForCdp(data, actor);
+    data.frameworks = recomputeFrameworks(data.frameworks, data.dataPoints);
 
     writeData(data);
     return data;
@@ -608,12 +634,12 @@ export async function saveManualEntry(dpId: string, value: number, unit: string,
   });
 }
 
-export async function validateQuestionnaireField(fieldId: string, actor: Actor): Promise<AppData> {
+export async function validateQuestionnaireField(fieldId: string, actor: Actor, correctedValue?: number): Promise<AppData> {
   return serialize(() => {
     const data = readData();
     const now = new Date().toISOString();
     data.questionnaireFields = data.questionnaireFields.map((f) =>
-      f.id === fieldId ? { ...f, status: "verified", validatedBy: actor.name, validatedAt: now } : f
+      f.id === fieldId ? { ...f, value: correctedValue ?? f.value, status: "verified", validatedBy: actor.name, validatedAt: now } : f
     );
     const field = data.questionnaireFields.find((f) => f.id === fieldId);
     logAction(data, {
@@ -622,7 +648,54 @@ export async function validateQuestionnaireField(fieldId: string, actor: Actor):
       action: "pwi_field_validated",
       entityType: "questionnaire_field",
       entityLabel: field?.fieldId ?? fieldId,
-      details: field ? `${field.value} ${field.unit}` : undefined,
+      details: correctedValue != null ? `Corrected to ${correctedValue} ${field?.unit ?? ""}`.trim() : field ? `${field.value} ${field.unit}` : undefined,
+    });
+    writeData(data);
+    return data;
+  });
+}
+
+/**
+ * "6. Improve the Evidence Verification Workflow" — approve/reject a whole
+ * group of fields (e.g. a category section) in one call instead of N
+ * separate round trips, so a bulk "Approve section" click is one write, not
+ * one write per row. `edits` carries any inline corrections made before
+ * approval, keyed by field id — same semantics as the single-field
+ * `correctedValue` above, just applied to many rows atomically.
+ */
+export async function bulkValidateQuestionnaireFields(fieldIds: string[], actor: Actor, edits?: Record<string, number>): Promise<AppData> {
+  return serialize(() => {
+    const data = readData();
+    const now = new Date().toISOString();
+    const idSet = new Set(fieldIds);
+    data.questionnaireFields = data.questionnaireFields.map((f) =>
+      idSet.has(f.id) ? { ...f, value: edits?.[f.id] ?? f.value, status: "verified", validatedBy: actor.name, validatedAt: now } : f
+    );
+    logAction(data, {
+      actorName: actor.name,
+      actorRole: actor.role,
+      action: "pwi_bulk_validated",
+      entityType: "questionnaire_field",
+      entityLabel: `${fieldIds.length} field(s)`,
+      details: edits && Object.keys(edits).length > 0 ? `${Object.keys(edits).length} corrected before approval` : undefined,
+    });
+    writeData(data);
+    return data;
+  });
+}
+
+export async function bulkRejectQuestionnaireFields(fieldIds: string[], actor: Actor, reason: string): Promise<AppData> {
+  return serialize(() => {
+    const data = readData();
+    const idSet = new Set(fieldIds);
+    data.questionnaireFields = data.questionnaireFields.map((f) => (idSet.has(f.id) ? { ...f, status: "rejected", rejectionReason: reason } : f));
+    logAction(data, {
+      actorName: actor.name,
+      actorRole: actor.role,
+      action: "pwi_bulk_rejected",
+      entityType: "questionnaire_field",
+      entityLabel: `${fieldIds.length} field(s)`,
+      details: reason,
     });
     writeData(data);
     return data;
@@ -722,6 +795,102 @@ function recomputeFrameworks(frameworks: Framework[], dataPoints: DataPoint[]): 
   return frameworks.map((f) => ({ ...f, items: f.items.map((it) => ({ ...it, status: computeItemStatus(it, dataPoints) })) }));
 }
 
+/**
+ * "4. Automatically Link Existing Evidence" — mutates `data.frameworks` in
+ * place (CDP framework(s) only) so that any evidence already satisfying a
+ * question gets cited without a human ever opening the "Link evidence"
+ * modal. Runs at every trigger the spec calls for: new upload, evidence
+ * library change, report generation, and questionnaire open (see call
+ * sites: uploadEvidence, generateCdpReport, and the GET /api/data route).
+ *
+ * Rules mirrored from the spec:
+ *  - One document can satisfy multiple questions (no "claim" exclusivity —
+ *    the same evidence id can be pushed onto many items' linkedEvidenceIds).
+ *  - Never relies on filename alone (see cdp-engine's scoring weights).
+ *  - Never re-attaches evidence a human explicitly unlinked
+ *    (FrameworkItem.excludedFromAutoLink).
+ *  - Never silently overwrites — it only ever ADDS to linkedEvidenceIds;
+ *    approved drafts are invalidated the same way a manual link would
+ *    invalidate them (new evidence changes what the draft should say), but
+ *    only when something genuinely new was attached this pass, so a
+ *    no-op reconciliation (e.g. on every page load) never clobbers an
+ *    Admin's approval.
+ *
+ * Returns the count of newly-created (item, evidence) links, for logging.
+ */
+function autoLinkEvidenceForCdp(data: AppData, actor: Actor): number {
+  const eligible = eligibleEvidenceForAutoLink(data.evidence);
+  let linksAdded = 0;
+
+  data.frameworks = data.frameworks.map((f) => {
+    if (!f.name.toLowerCase().includes("cdp")) return f;
+    const keywordWeights = buildKeywordWeights(f);
+    return {
+      ...f,
+      items: f.items.map((item) => {
+        const already = new Set(item.linkedEvidenceIds);
+        const excluded = new Set(item.excludedFromAutoLink ?? []);
+        const newlyLinked: string[] = [];
+        const newlyLinkedReasons: string[] = [];
+
+        for (const ev of eligible) {
+          if (already.has(ev.id) || excluded.has(ev.id)) continue;
+          const { score, reasons } = scoreEvidenceForItem(item, ev, data.dataPoints, data.questionnaireFields, keywordWeights);
+          if (score >= AUTO_LINK_THRESHOLD) {
+            newlyLinked.push(ev.id);
+            newlyLinkedReasons.push(`${ev.fileName} (${reasons.join("; ")})`);
+          }
+        }
+
+        if (newlyLinked.length === 0) return item;
+        linksAdded += newlyLinked.length;
+        logAction(data, {
+          actorName: actor.name,
+          actorRole: actor.role,
+          action: "auto_link_evidence",
+          entityType: "framework",
+          entityLabel: item.code,
+          details: `Automatically attached ${newlyLinked.length} document(s): ${newlyLinkedReasons.join(" | ")}`,
+        });
+        return {
+          ...item,
+          linkedEvidenceIds: [...item.linkedEvidenceIds, ...newlyLinked],
+          autoLinkedEvidenceIds: [...(item.autoLinkedEvidenceIds ?? []), ...newlyLinked],
+          // Same rule as a manual link: new cited evidence invalidates any
+          // existing draft/approval so it can't go stale silently.
+          draftAnswer: null,
+          draftCitations: null,
+          draftApprovedBy: null,
+          draftApprovedAt: null,
+        };
+      }),
+    };
+  });
+
+  return linksAdded;
+}
+
+/** System actor used when auto-linking runs off a passive trigger (page load) rather than a specific person's action. */
+const SYSTEM_ACTOR: Actor = { name: "System (auto-link)", role: "admin" };
+
+/**
+ * Public entry point for the passive triggers — "evidence library changes"
+ * and "a questionnaire is opened" — that aren't already inside another
+ * serialize()'d mutation. Safe/cheap to call on every GET: it's a no-op
+ * write when nothing new matches.
+ */
+export async function reconcileCdpAutoLinks(actor: Actor = SYSTEM_ACTOR): Promise<AppData> {
+  return serialize(() => {
+    const data = readData();
+    const added = autoLinkEvidenceForCdp(data, actor);
+    if (added > 0) {
+      data.frameworks = recomputeFrameworks(data.frameworks, data.dataPoints);
+      writeData(data);
+    }
+    return data;
+  });
+}
+
 export async function linkDataPointToItem(frameworkId: string, itemId: string, dataPointId: string, actor: Actor): Promise<AppData> {
   return serialize(() => {
     const data = readData();
@@ -792,7 +961,17 @@ export async function unlinkEvidenceFromItem(frameworkId: string, itemId: string
             ...f,
             items: f.items.map((it) =>
               it.id === itemId
-                ? { ...it, linkedEvidenceIds: it.linkedEvidenceIds.filter((e) => e !== evidenceId), draftAnswer: null, draftCitations: null, draftApprovedBy: null, draftApprovedAt: null }
+                ? {
+                    ...it,
+                    linkedEvidenceIds: it.linkedEvidenceIds.filter((e) => e !== evidenceId),
+                    autoLinkedEvidenceIds: (it.autoLinkedEvidenceIds ?? []).filter((e) => e !== evidenceId),
+                    // A human explicitly removed this citation — auto-link must not silently re-add it on the next upload/report/open.
+                    excludedFromAutoLink: Array.from(new Set([...(it.excludedFromAutoLink ?? []), evidenceId])),
+                    draftAnswer: null,
+                    draftCitations: null,
+                    draftApprovedBy: null,
+                    draftApprovedAt: null,
+                  }
                 : it
             ),
           }
@@ -890,6 +1069,64 @@ export async function approveDraftAnswer(frameworkId: string, itemId: string, ac
     data.frameworks = recomputeFrameworks(data.frameworks, data.dataPoints);
     const item = data.frameworks.find((f) => f.id === frameworkId)?.items.find((i) => i.id === itemId);
     logAction(data, { actorName: actor.name, actorRole: actor.role, action: "draft_approved", entityType: "framework", entityLabel: item?.code ?? itemId });
+    writeData(data);
+    return data;
+  });
+}
+
+/**
+ * "11. Separate Report Sections" — reports are generated client-side (pure
+ * HTML string builders already exist for PWI in reports/page.tsx and now
+ * for CDP in cdp-report.ts) but PERSISTED here so the Reports page can list,
+ * search, filter, and re-open past reports across sessions instead of a
+ * report only existing in one browser tab until it's closed.
+ */
+export async function saveReport(
+  kind: ReportRecord["kind"],
+  title: string,
+  html: string,
+  summary: Record<string, string>,
+  actor: Actor,
+  replaceId?: string
+): Promise<{ data: AppData; reportId: string }> {
+  return serialize(() => {
+    const data = readData();
+    const reportId = replaceId ?? id();
+    const now = new Date().toISOString();
+    const record: ReportRecord = {
+      id: reportId,
+      kind,
+      title,
+      status: "generated",
+      generatedAt: now,
+      generatedBy: actor.name,
+      html,
+      summary,
+    };
+    if (replaceId && data.reports.some((r) => r.id === replaceId)) {
+      data.reports = data.reports.map((r) => (r.id === replaceId ? record : r));
+    } else {
+      data.reports.unshift(record);
+    }
+    logAction(data, {
+      actorName: actor.name,
+      actorRole: actor.role,
+      action: replaceId ? "report_regenerated" : "report_generated",
+      entityType: "report",
+      entityLabel: title,
+      details: `${kind.toUpperCase()} assessment report`,
+    });
+    writeData(data);
+    return { data, reportId };
+  });
+}
+
+export async function deleteReport(reportId: string, actor: Actor): Promise<AppData> {
+  return serialize(() => {
+    const data = readData();
+    const report = data.reports.find((r) => r.id === reportId);
+    data.reports = data.reports.filter((r) => r.id !== reportId);
+    logAction(data, { actorName: actor.name, actorRole: actor.role, action: "report_deleted", entityType: "report", entityLabel: report?.title ?? reportId });
     writeData(data);
     return data;
   });

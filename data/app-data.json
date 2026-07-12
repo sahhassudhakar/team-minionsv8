@@ -1,28 +1,159 @@
 {
   "evidence": [
     {
-      "id": "j8jhlaad",
-      "fileName": "Management Strcuture.docx",
-      "documentType": "Unclassified",
-      "businessUnit": "Unassigned",
-      "periodStart": "2026-07-12T09:39:43.757Z",
-      "periodEnd": "2026-07-12T09:39:43.757Z",
-      "status": "extracted",
-      "uploadedBy": "Priya Nair",
-      "uploadedAt": "2026-07-12T09:39:43.757Z",
-      "fileSizeKb": 13,
-      "contentHash": "0468e6bbcf0225e8695ab581d77a7bff174dbf13ae58ac4ee6d741e714ab100d"
+      "id": "jon1j7l2",
+      "fileName": "12_invalid_not_a_real_pdf.pdf",
+      "documentType": "Employee headcount record",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.748Z",
+      "periodEnd": "2026-07-12T11:38:01.748Z",
+      "status": "rejected",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.748Z",
+      "fileSizeKb": 0,
+      "contentHash": "f23556ed50412a7a405dc33c66cdf22a4e4d0627a61928911fdae388ec44405a",
+      "processingError": "Invalid PDF structure."
     },
     {
-      "id": "rw9rq5jn",
-      "fileName": "01_water_utility_bill.pdf",
-      "documentType": "Utility Bill",
-      "businessUnit": "Unassigned",
-      "periodStart": "2026-07-12T09:38:35.908Z",
-      "periodEnd": "2026-07-12T09:38:35.908Z",
+      "id": "yo3r74f8",
+      "fileName": "11_recycling_log_low_confidence.pdf",
+      "documentType": "Recycling / reuse log",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.732Z",
+      "periodEnd": "2026-07-12T11:38:01.732Z",
       "status": "extracted",
-      "uploadedBy": "Priya Nair",
-      "uploadedAt": "2026-07-12T09:38:35.908Z",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.732Z",
+      "fileSizeKb": 0,
+      "contentHash": "92e8613044133017c783e4ebd103f4189fb4c59766006874c2fe2affc993a297"
+    },
+    {
+      "id": "4oamz35b",
+      "fileName": "10_wash_access_record.pdf",
+      "documentType": "WASH access record",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.713Z",
+      "periodEnd": "2026-07-12T11:38:01.713Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.713Z",
+      "fileSizeKb": 0,
+      "contentHash": "4413cee2f7d743b17d5e5a16e6602603eb8e68cb151ae7dafa695b09b335e539"
+    },
+    {
+      "id": "v95n5dnf",
+      "fileName": "09_employee_headcount_record.pdf",
+      "documentType": "Employee headcount record",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.691Z",
+      "periodEnd": "2026-07-12T11:38:01.691Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.691Z",
+      "fileSizeKb": 0,
+      "contentHash": "4c05365da1c3e065cb7a5126853fcde52810efd3fa5399178385cdefa10dd09c"
+    },
+    {
+      "id": "sdb6wv68",
+      "fileName": "08_basin_quality_project.pdf",
+      "documentType": "Basin water quality project report",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.675Z",
+      "periodEnd": "2026-07-12T11:38:01.675Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.675Z",
+      "fileSizeKb": 0,
+      "contentHash": "5c9b9ac9c3df30289ca50af725d5b35cd9402c92237a77253404036974f3b9ea"
+    },
+    {
+      "id": "wu2fcxjn",
+      "fileName": "07_subbasin_quality_project.pdf",
+      "documentType": "Sub-basin water quality project report",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.656Z",
+      "periodEnd": "2026-07-12T11:38:01.656Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.656Z",
+      "fileSizeKb": 0,
+      "contentHash": "b60eaa2712038a9b04d2ff0d345e361f55f15dc574530dd9201366968a1d2890"
+    },
+    {
+      "id": "3724fhi4",
+      "fileName": "06_water_quality_lab_report.pdf",
+      "documentType": "Water quality lab report",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.638Z",
+      "fileSizeKb": 0,
+      "contentHash": "c51f7982f2590d421196678e9fc7001e9a53b1286c240770738f7ac07934dd65"
+    },
+    {
+      "id": "vs6j0taz",
+      "fileName": "05_basin_project_report.pdf",
+      "documentType": "Basin project report",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.619Z",
+      "periodEnd": "2026-07-12T11:38:01.619Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.619Z",
+      "fileSizeKb": 0,
+      "contentHash": "f012263d1cb99fcecefc52eabceb16d3a79694b5df27bfd7d00b300c6cd6ecb0"
+    },
+    {
+      "id": "rpn1djdv",
+      "fileName": "04_subbasin_project_report.pdf",
+      "documentType": "Sub-basin project report",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.587Z",
+      "periodEnd": "2026-07-12T11:38:01.587Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.587Z",
+      "fileSizeKb": 0,
+      "contentHash": "1a82b4d4cb8fc1c7c75e6c9be96122a65933479541e4d4e2f303ff152452e0a3"
+    },
+    {
+      "id": "rbw2djh6",
+      "fileName": "03_recycling_reuse_log.pdf",
+      "documentType": "Recycling / reuse log",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.566Z",
+      "periodEnd": "2026-07-12T11:38:01.566Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.566Z",
+      "fileSizeKb": 0,
+      "contentHash": "d52f2ce7f0ffc9e0970b703a58122f7778504327483922ae723fc7104dc0aea3"
+    },
+    {
+      "id": "nj81x11y",
+      "fileName": "02_wastewater_discharge_record.pdf",
+      "documentType": "Wastewater discharge record",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.543Z",
+      "periodEnd": "2026-07-12T11:38:01.543Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.543Z",
+      "fileSizeKb": 0,
+      "contentHash": "13d9461a50666ad2a2da8fc78839422464d77fb8424a18513927928fc4728ff4"
+    },
+    {
+      "id": "88wkpta7",
+      "fileName": "01_water_utility_bill.pdf",
+      "documentType": "Water utility bill / meter log",
+      "businessUnit": "Riverton Facility A",
+      "periodStart": "2026-07-12T11:38:01.171Z",
+      "periodEnd": "2026-07-12T11:38:01.171Z",
+      "status": "extracted",
+      "uploadedBy": "FM",
+      "uploadedAt": "2026-07-12T11:38:01.171Z",
       "fileSizeKb": 0,
       "contentHash": "5bf701e93c013716217847b55fdeebed496452cd3e26b3fe7a359deae7fda7a8"
     }
@@ -68,14 +199,25 @@
           "code": "RISK-1",
           "module": "Risk Assessment",
           "text": "Describe the process used to identify, assess, and prioritize water-related risks across owned and operated assets.",
-          "status": "unmapped",
+          "status": "pending",
           "linkedDataPointIds": [],
-          "linkedEvidenceIds": [],
+          "linkedEvidenceIds": [
+            "rpn1djdv",
+            "vs6j0taz",
+            "wu2fcxjn",
+            "sdb6wv68"
+          ],
           "requiredEvidenceHint": "Water risk assessment methodology document or basin risk screening report.",
           "draftAnswer": null,
           "draftCitations": null,
           "draftApprovedBy": null,
-          "draftApprovedAt": null
+          "draftApprovedAt": null,
+          "autoLinkedEvidenceIds": [
+            "rpn1djdv",
+            "vs6j0taz",
+            "wu2fcxjn",
+            "sdb6wv68"
+          ]
         },
         {
           "id": "seed-cdp-risk-2",
@@ -138,42 +280,73 @@
           "code": "WA-1",
           "module": "Water Accounting",
           "text": "Report total water withdrawal by source for the reporting period.",
-          "status": "unmapped",
+          "status": "ready",
           "linkedDataPointIds": [],
-          "linkedEvidenceIds": [],
+          "linkedEvidenceIds": [
+            "88wkpta7"
+          ],
           "requiredEvidenceHint": "Water utility bill or meter log covering the reporting period.",
-          "draftAnswer": null,
-          "draftCitations": null,
-          "draftApprovedBy": null,
-          "draftApprovedAt": null
+          "draftAnswer": "Freshwater Withdrawal: 452000 L. [01_water_utility_bill.pdf]",
+          "draftCitations": [
+            {
+              "statement": "Freshwater Withdrawal: 452000 L.",
+              "evidenceId": "88wkpta7",
+              "fileName": "01_water_utility_bill.pdf"
+            }
+          ],
+          "draftApprovedBy": "Priya Nair",
+          "draftApprovedAt": "2026-07-12T11:40:42.533Z",
+          "autoLinkedEvidenceIds": [
+            "88wkpta7"
+          ]
         },
         {
           "id": "seed-cdp-wa-2",
           "code": "WA-2",
           "module": "Water Accounting",
           "text": "Report total water discharge and consumption for the reporting period.",
-          "status": "unmapped",
+          "status": "ready",
           "linkedDataPointIds": [],
-          "linkedEvidenceIds": [],
+          "linkedEvidenceIds": [
+            "nj81x11y"
+          ],
           "requiredEvidenceHint": "Wastewater discharge record for the reporting period.",
-          "draftAnswer": null,
-          "draftCitations": null,
-          "draftApprovedBy": null,
-          "draftApprovedAt": null
+          "draftAnswer": "Wastewater Discharged: 318000 L. [02_wastewater_discharge_record.pdf]",
+          "draftCitations": [
+            {
+              "statement": "Wastewater Discharged: 318000 L.",
+              "evidenceId": "nj81x11y",
+              "fileName": "02_wastewater_discharge_record.pdf"
+            }
+          ],
+          "draftApprovedBy": "Priya Nair",
+          "draftApprovedAt": "2026-07-12T11:40:48.832Z",
+          "autoLinkedEvidenceIds": [
+            "nj81x11y"
+          ]
         },
         {
           "id": "seed-cdp-wq-1",
           "code": "WQ-1",
           "module": "Water Quality",
           "text": "Report effluent water quality data and the methodology used to assess pollutant reduction.",
-          "status": "unmapped",
+          "status": "pending",
           "linkedDataPointIds": [],
-          "linkedEvidenceIds": [],
+          "linkedEvidenceIds": [
+            "3724fhi4",
+            "wu2fcxjn",
+            "sdb6wv68"
+          ],
           "requiredEvidenceHint": "Water quality lab report with influent/effluent TSS, Total-N, and Total-P.",
           "draftAnswer": null,
           "draftCitations": null,
           "draftApprovedBy": null,
-          "draftApprovedAt": null
+          "draftApprovedAt": null,
+          "autoLinkedEvidenceIds": [
+            "3724fhi4",
+            "wu2fcxjn",
+            "sdb6wv68"
+          ]
         },
         {
           "id": "seed-cdp-ver-1",
@@ -208,94 +381,982 @@
           "code": "ENG-2",
           "module": "Community Engagement",
           "text": "Describe engagement with local communities on water access, sanitation, and hygiene (WASH).",
-          "status": "unmapped",
+          "status": "ready",
           "linkedDataPointIds": [],
-          "linkedEvidenceIds": [],
+          "linkedEvidenceIds": [
+            "v95n5dnf",
+            "4oamz35b"
+          ],
           "requiredEvidenceHint": "WASH access record or community engagement report.",
-          "draftAnswer": null,
-          "draftCitations": null,
-          "draftApprovedBy": null,
-          "draftApprovedAt": null
+          "draftAnswer": "Employees with WASH access: 195. [09_employee_headcount_record.pdf] People given WASH access — sub-basin: 220; People given WASH access — basin: 267. [10_wash_access_record.pdf]",
+          "draftCitations": [
+            {
+              "statement": "Employees with WASH access: 195.",
+              "evidenceId": "v95n5dnf",
+              "fileName": "09_employee_headcount_record.pdf"
+            },
+            {
+              "statement": "People given WASH access — sub-basin: 220; People given WASH access — basin: 267.",
+              "evidenceId": "4oamz35b",
+              "fileName": "10_wash_access_record.pdf"
+            }
+          ],
+          "draftApprovedBy": "Priya Nair",
+          "draftApprovedAt": "2026-07-12T11:40:58.067Z",
+          "autoLinkedEvidenceIds": [
+            "v95n5dnf",
+            "4oamz35b"
+          ]
         }
       ]
     }
   ],
   "auditLog": [
     {
-      "id": "hfnpudzg",
-      "timestamp": "2026-07-12T09:39:43.990Z",
-      "actorName": "Priya Nair",
-      "actorRole": "admin",
-      "action": "extract",
-      "entityType": "evidence",
-      "entityLabel": "Management Strcuture.docx",
-      "details": "Document text was read successfully but contains no recognized quantitative field."
+      "id": "lpwcm2y7",
+      "timestamp": "2026-07-12T11:43:03.368Z",
+      "actorName": "auditor",
+      "actorRole": "auditor",
+      "action": "login",
+      "entityType": "session",
+      "entityLabel": "auditor@team.ai"
     },
     {
-      "id": "2a47adrm",
-      "timestamp": "2026-07-12T09:39:43.990Z",
+      "id": "qcgwnhfb",
+      "timestamp": "2026-07-12T11:42:55.797Z",
       "actorName": "Priya Nair",
       "actorRole": "admin",
+      "action": "logout",
+      "entityType": "session",
+      "entityLabel": "admin@teamminions.ai"
+    },
+    {
+      "id": "zfxsepia",
+      "timestamp": "2026-07-12T11:41:13.320Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "report_generated",
+      "entityType": "report",
+      "entityLabel": "CDP Water Security Assessment Report — 2026",
+      "details": "CDP assessment report"
+    },
+    {
+      "id": "srkygj64",
+      "timestamp": "2026-07-12T11:40:58.067Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_approved",
+      "entityType": "framework",
+      "entityLabel": "ENG-2"
+    },
+    {
+      "id": "gi7ea79m",
+      "timestamp": "2026-07-12T11:40:54.047Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_generated",
+      "entityType": "framework",
+      "entityLabel": "ENG-2"
+    },
+    {
+      "id": "r3h1xo4c",
+      "timestamp": "2026-07-12T11:40:48.832Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_approved",
+      "entityType": "framework",
+      "entityLabel": "WA-2"
+    },
+    {
+      "id": "kdd1drkw",
+      "timestamp": "2026-07-12T11:40:47.979Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_generated",
+      "entityType": "framework",
+      "entityLabel": "WA-2"
+    },
+    {
+      "id": "4tsi5gum",
+      "timestamp": "2026-07-12T11:40:42.534Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_approved",
+      "entityType": "framework",
+      "entityLabel": "WA-1"
+    },
+    {
+      "id": "0o3g7u7h",
+      "timestamp": "2026-07-12T11:40:35.023Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "draft_generated",
+      "entityType": "framework",
+      "entityLabel": "WA-1"
+    },
+    {
+      "id": "q093kfm0",
+      "timestamp": "2026-07-12T11:39:27.643Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "report_generated",
+      "entityType": "report",
+      "entityLabel": "PWI Assessment Report — 2026",
+      "details": "PWI assessment report"
+    },
+    {
+      "id": "c2mjavk7",
+      "timestamp": "2026-07-12T11:39:18.623Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "pwi_field_manual_entry",
+      "entityType": "questionnaire_field",
+      "entityLabel": "ighuan72",
+      "details": "7844"
+    },
+    {
+      "id": "affsoh7h",
+      "timestamp": "2026-07-12T11:39:06.687Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "pwi_bulk_validated",
+      "entityType": "questionnaire_field",
+      "entityLabel": "14 field(s)"
+    },
+    {
+      "id": "qvqsep9g",
+      "timestamp": "2026-07-12T11:38:58.495Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "pwi_field_validated",
+      "entityType": "questionnaire_field",
+      "entityLabel": "employees_with_wash_access",
+      "details": "195 "
+    },
+    {
+      "id": "n0ta5ir2",
+      "timestamp": "2026-07-12T11:38:57.261Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "pwi_field_validated",
+      "entityType": "questionnaire_field",
+      "entityLabel": "p3_wash_people",
+      "details": "Corrected to 267"
+    },
+    {
+      "id": "851hv8i8",
+      "timestamp": "2026-07-12T11:38:51.807Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "pwi_field_validated",
+      "entityType": "questionnaire_field",
+      "entityLabel": "p2_wash_people",
+      "details": "220 "
+    },
+    {
+      "id": "m5ka7pqx",
+      "timestamp": "2026-07-12T11:38:30.610Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "login",
+      "entityType": "session",
+      "entityLabel": "admin@teamminions.ai"
+    },
+    {
+      "id": "r0hs0nxo",
+      "timestamp": "2026-07-12T11:38:17.675Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "logout",
+      "entityType": "session",
+      "entityLabel": "floor@team.ai"
+    },
+    {
+      "id": "m2s5ui9h",
+      "timestamp": "2026-07-12T11:38:01.754Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "processing_failed",
+      "entityType": "evidence",
+      "entityLabel": "12_invalid_not_a_real_pdf.pdf",
+      "details": "Invalid PDF structure."
+    },
+    {
+      "id": "dtcot3tk",
+      "timestamp": "2026-07-12T11:38:01.754Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
       "action": "upload",
       "entityType": "evidence",
-      "entityLabel": "Management Strcuture.docx",
-      "details": "13 KB"
+      "entityLabel": "12_invalid_not_a_real_pdf.pdf",
+      "details": "0 KB"
     },
     {
-      "id": "vehl3hgz",
-      "timestamp": "2026-07-12T09:38:35.923Z",
-      "actorName": "Priya Nair",
-      "actorRole": "admin",
+      "id": "zdd1738r",
+      "timestamp": "2026-07-12T11:38:01.743Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "11_recycling_log_low_confidence.pdf",
+      "details": "Found a candidate value but nearby text hedges its accuracy — routed to manual entry. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "18duz5kv",
+      "timestamp": "2026-07-12T11:38:01.743Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "11_recycling_log_low_confidence.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "me10e49t",
+      "timestamp": "2026-07-12T11:38:01.730Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "ENG-2",
+      "details": "Automatically attached 1 document(s): 10_wash_access_record.pdf (Document type/metadata matches: access, wash, record; Extracted content matches: access, wash; Filename also matches: access, wash)"
+    },
+    {
+      "id": "dxnhtbc6",
+      "timestamp": "2026-07-12T11:38:01.728Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "10_wash_access_record.pdf",
+      "details": "Matched 2 field(s) from document text. (2 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "08a3cckw",
+      "timestamp": "2026-07-12T11:38:01.728Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "10_wash_access_record.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "3wwpsrpt",
+      "timestamp": "2026-07-12T11:38:01.709Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "ENG-2",
+      "details": "Automatically attached 1 document(s): 09_employee_headcount_record.pdf (Document type/metadata matches: record; Extracted content matches: access, wash; Filename also matches: record)"
+    },
+    {
+      "id": "wevq1fh4",
+      "timestamp": "2026-07-12T11:38:01.708Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "09_employee_headcount_record.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "ul27tmjw",
+      "timestamp": "2026-07-12T11:38:01.708Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "09_employee_headcount_record.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "7x5yv36m",
+      "timestamp": "2026-07-12T11:38:01.689Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "WQ-1",
+      "details": "Automatically attached 1 document(s): 08_basin_quality_project.pdf (Document type/metadata matches: quality; Extracted content matches: pollutant; Filename also matches: quality)"
+    },
+    {
+      "id": "izhc96ab",
+      "timestamp": "2026-07-12T11:38:01.688Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "RISK-1",
+      "details": "Automatically attached 1 document(s): 08_basin_quality_project.pdf (Document type/metadata matches: basin; Extracted content matches: basin; Filename also matches: basin)"
+    },
+    {
+      "id": "lxgjpfxx",
+      "timestamp": "2026-07-12T11:38:01.688Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "08_basin_quality_project.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "xofn8pnk",
+      "timestamp": "2026-07-12T11:38:01.688Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "08_basin_quality_project.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "7ues5joa",
+      "timestamp": "2026-07-12T11:38:01.673Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "WQ-1",
+      "details": "Automatically attached 1 document(s): 07_subbasin_quality_project.pdf (Document type/metadata matches: quality; Extracted content matches: pollutant; Filename also matches: quality)"
+    },
+    {
+      "id": "tziuwra1",
+      "timestamp": "2026-07-12T11:38:01.670Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "RISK-1",
+      "details": "Automatically attached 1 document(s): 07_subbasin_quality_project.pdf (Document type/metadata matches: basin; Extracted content matches: basin; Filename also matches: basin)"
+    },
+    {
+      "id": "cl530zi5",
+      "timestamp": "2026-07-12T11:38:01.670Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "07_subbasin_quality_project.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "8uurh34a",
+      "timestamp": "2026-07-12T11:38:01.670Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "07_subbasin_quality_project.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "ezj19q5n",
+      "timestamp": "2026-07-12T11:38:01.654Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "WQ-1",
+      "details": "Automatically attached 1 document(s): 06_water_quality_lab_report.pdf (Document type/metadata matches: quality; Extracted content matches: effluent, influent, total; Filename also matches: quality)"
+    },
+    {
+      "id": "zuttr2ti",
+      "timestamp": "2026-07-12T11:38:01.653Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "06_water_quality_lab_report.pdf",
+      "details": "Matched 6 field(s) from document text. (6 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "peuyluec",
+      "timestamp": "2026-07-12T11:38:01.653Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "06_water_quality_lab_report.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "20xyq38s",
+      "timestamp": "2026-07-12T11:38:01.635Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "RISK-1",
+      "details": "Automatically attached 1 document(s): 05_basin_project_report.pdf (Document type/metadata matches: basin; Extracted content matches: basin; Filename also matches: basin)"
+    },
+    {
+      "id": "4ncvh5od",
+      "timestamp": "2026-07-12T11:38:01.634Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "05_basin_project_report.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "olle3e4m",
+      "timestamp": "2026-07-12T11:38:01.634Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "05_basin_project_report.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "r6pufkxl",
+      "timestamp": "2026-07-12T11:38:01.617Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "RISK-1",
+      "details": "Automatically attached 1 document(s): 04_subbasin_project_report.pdf (Document type/metadata matches: basin; Extracted content matches: basin; Filename also matches: basin)"
+    },
+    {
+      "id": "kd7lmgtz",
+      "timestamp": "2026-07-12T11:38:01.616Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "04_subbasin_project_report.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "95urrch3",
+      "timestamp": "2026-07-12T11:38:01.616Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "04_subbasin_project_report.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "qbu0m6a6",
+      "timestamp": "2026-07-12T11:38:01.584Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "03_recycling_reuse_log.pdf",
+      "details": "Matched 2 field(s) from document text. (2 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "0d8c3xsm",
+      "timestamp": "2026-07-12T11:38:01.584Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "03_recycling_reuse_log.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "9m89x02j",
+      "timestamp": "2026-07-12T11:38:01.564Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "WA-2",
+      "details": "Automatically attached 1 document(s): 02_wastewater_discharge_record.pdf (Document type/metadata matches: discharge, wastewater, record; Extracted content matches: discharge, wastewater; Filename also matches: discharge, wastewater)"
+    },
+    {
+      "id": "hzudqv07",
+      "timestamp": "2026-07-12T11:38:01.561Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "extract",
+      "entityType": "evidence",
+      "entityLabel": "02_wastewater_discharge_record.pdf",
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
+    },
+    {
+      "id": "5fbhwr70",
+      "timestamp": "2026-07-12T11:38:01.561Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "upload",
+      "entityType": "evidence",
+      "entityLabel": "02_wastewater_discharge_record.pdf",
+      "details": "0 KB"
+    },
+    {
+      "id": "0qxmci78",
+      "timestamp": "2026-07-12T11:38:01.541Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "auto_link_evidence",
+      "entityType": "framework",
+      "entityLabel": "WA-1",
+      "details": "Automatically attached 1 document(s): 01_water_utility_bill.pdf (Document type/metadata matches: utility, bill, meter; Extracted content matches: withdrawal; Filename also matches: utility, bill)"
+    },
+    {
+      "id": "5yblr6k9",
+      "timestamp": "2026-07-12T11:38:01.540Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
       "action": "extract",
       "entityType": "evidence",
       "entityLabel": "01_water_utility_bill.pdf",
-      "details": "Document text was read successfully but contains no recognized quantitative field."
+      "details": "Matched 1 field(s) from document text. (1 questionnaire field(s) proposed)"
     },
     {
-      "id": "8ke2quiu",
-      "timestamp": "2026-07-12T09:38:35.923Z",
-      "actorName": "Priya Nair",
-      "actorRole": "admin",
+      "id": "symhwudg",
+      "timestamp": "2026-07-12T11:38:01.540Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
       "action": "upload",
       "entityType": "evidence",
       "entityLabel": "01_water_utility_bill.pdf",
       "details": "0 KB"
     },
     {
-      "id": "7iukp6s6",
-      "timestamp": "2026-07-12T09:38:26.888Z",
+      "id": "bqfmruqp",
+      "timestamp": "2026-07-12T11:36:52.812Z",
+      "actorName": "FM",
+      "actorRole": "store_manager",
+      "action": "login",
+      "entityType": "session",
+      "entityLabel": "floor@team.ai"
+    },
+    {
+      "id": "cmcmes4m",
+      "timestamp": "2026-07-12T11:36:41.817Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "logout",
+      "entityType": "session",
+      "entityLabel": "admin@teamminions.ai"
+    },
+    {
+      "id": "hgruymye",
+      "timestamp": "2026-07-12T11:36:39.754Z",
       "actorName": "Priya Nair",
       "actorRole": "admin",
       "action": "site_baseline_set",
       "entityType": "site",
-      "entityLabel": "ypi7kvij",
+      "entityLabel": "h2c4qk04",
+      "details": "Employees: 200, Avg family size: 5, Baseline Replenishment Needed: 20000 L"
+    },
+    {
+      "id": "tolp39gv",
+      "timestamp": "2026-07-12T11:36:36.627Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "site_baseline_set",
+      "entityType": "site",
+      "entityLabel": "h2c4qk04",
+      "details": "Employees: 200, Avg family size: 5, Baseline Replenishment Needed: 20000 L"
+    },
+    {
+      "id": "kr2ejh36",
+      "timestamp": "2026-07-12T11:36:20.940Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "site_baseline_set",
+      "entityType": "site",
+      "entityLabel": "h2c4qk04",
       "details": "Employees: 200, Avg family size: 5, Baseline Replenishment Needed: 137000 L"
     },
     {
-      "id": "7narjx8j",
-      "timestamp": "2026-07-12T09:38:21.894Z",
+      "id": "jllu41zg",
+      "timestamp": "2026-07-12T11:35:42.352Z",
       "actorName": "Priya Nair",
       "actorRole": "admin",
       "action": "site_created",
       "entityType": "site",
-      "entityLabel": "Riverton"
+      "entityLabel": "Riverton Facility A"
+    },
+    {
+      "id": "g0g5ki7p",
+      "timestamp": "2026-07-12T11:35:30.924Z",
+      "actorName": "Priya Nair",
+      "actorRole": "admin",
+      "action": "login",
+      "entityType": "session",
+      "entityLabel": "admin@teamminions.ai"
     }
   ],
   "sites": [
     {
-      "id": "ypi7kvij",
-      "name": "Riverton",
-      "basinName": "Basin",
+      "id": "h2c4qk04",
+      "name": "Riverton Facility A",
+      "basinName": "Riverton Basin",
       "storeManagerEmail": null,
       "baseline": {
         "employeeCount": 200,
         "avgFamilySize": 5,
-        "baselineReplenishmentNeededL": 137000,
+        "baselineReplenishmentNeededL": 20000,
         "setBy": "Priya Nair",
-        "setAt": "2026-07-12T09:38:26.888Z"
+        "setAt": "2026-07-12T11:36:39.754Z"
       },
-      "createdAt": "2026-07-12T09:38:21.894Z"
+      "createdAt": "2026-07-12T11:35:42.352Z"
     }
   ],
-  "questionnaireFields": []
+  "questionnaireFields": [
+    {
+      "id": "ighuan72",
+      "siteId": "h2c4qk04",
+      "fieldId": "reused_water_l",
+      "value": 7844,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "yo3r74f8",
+      "evidenceFileName": "11_recycling_log_low_confidence.pdf",
+      "extractionExcerpt": null,
+      "confidence": null,
+      "periodStart": "2026-07-12T11:38:01.732Z",
+      "periodEnd": "2026-07-12T11:38:01.732Z",
+      "proposedAt": "2026-07-12T11:38:01.732Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:18.623Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "zmzwqznw",
+      "siteId": "h2c4qk04",
+      "fieldId": "p2_wash_people",
+      "value": 220,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "4oamz35b",
+      "evidenceFileName": "10_wash_access_record.pdf",
+      "extractionExcerpt": "Sub-Basin WASH Access: 220 people",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.713Z",
+      "periodEnd": "2026-07-12T11:38:01.713Z",
+      "proposedAt": "2026-07-12T11:38:01.713Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:38:51.806Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "t2lg94s9",
+      "siteId": "h2c4qk04",
+      "fieldId": "p3_wash_people",
+      "value": 267,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "4oamz35b",
+      "evidenceFileName": "10_wash_access_record.pdf",
+      "extractionExcerpt": "Basin WASH Access: 260 people",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.713Z",
+      "periodEnd": "2026-07-12T11:38:01.713Z",
+      "proposedAt": "2026-07-12T11:38:01.713Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:38:57.261Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "vbf383er",
+      "siteId": "h2c4qk04",
+      "fieldId": "employees_with_wash_access",
+      "value": 195,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "v95n5dnf",
+      "evidenceFileName": "09_employee_headcount_record.pdf",
+      "extractionExcerpt": "Employees with WASH access: 195",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.691Z",
+      "periodEnd": "2026-07-12T11:38:01.691Z",
+      "proposedAt": "2026-07-12T11:38:01.691Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:38:58.495Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "tqdrfyoc",
+      "siteId": "h2c4qk04",
+      "fieldId": "p3_pollutant_removed_kg",
+      "value": 60,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "sdb6wv68",
+      "evidenceFileName": "08_basin_quality_project.pdf",
+      "extractionExcerpt": "Basin Pollutant Removed: 60 kg",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.675Z",
+      "periodEnd": "2026-07-12T11:38:01.675Z",
+      "proposedAt": "2026-07-12T11:38:01.675Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "6d6d4pda",
+      "siteId": "h2c4qk04",
+      "fieldId": "p2_pollutant_removed_kg",
+      "value": 45,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "wu2fcxjn",
+      "evidenceFileName": "07_subbasin_quality_project.pdf",
+      "extractionExcerpt": "Sub-Basin Pollutant Removed: 45 kg",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.656Z",
+      "periodEnd": "2026-07-12T11:38:01.656Z",
+      "proposedAt": "2026-07-12T11:38:01.656Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "cvo07gy0",
+      "siteId": "h2c4qk04",
+      "fieldId": "influent_tss_mgl",
+      "value": 180,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Influent TSS: 180 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "v7glphvl",
+      "siteId": "h2c4qk04",
+      "fieldId": "influent_tn_mgl",
+      "value": 40,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Influent Total-N: 40 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "y0fpjgox",
+      "siteId": "h2c4qk04",
+      "fieldId": "influent_tp_mgl",
+      "value": 8,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Influent Total-P: 8 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "cwkxjb6q",
+      "siteId": "h2c4qk04",
+      "fieldId": "effluent_tss_mgl",
+      "value": 15,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Effluent TSS: 15 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "u3mt2p0p",
+      "siteId": "h2c4qk04",
+      "fieldId": "effluent_tn_mgl",
+      "value": 6,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Effluent Total-N: 6 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "rpak11mm",
+      "siteId": "h2c4qk04",
+      "fieldId": "effluent_tp_mgl",
+      "value": 1,
+      "unit": "",
+      "status": "verified",
+      "evidenceId": "3724fhi4",
+      "evidenceFileName": "06_water_quality_lab_report.pdf",
+      "extractionExcerpt": "Effluent Total-P: 1 mg/L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.638Z",
+      "periodEnd": "2026-07-12T11:38:01.638Z",
+      "proposedAt": "2026-07-12T11:38:01.638Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "pldkip9m",
+      "siteId": "h2c4qk04",
+      "fieldId": "p3_water_offset_l",
+      "value": 15000,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "vs6j0taz",
+      "evidenceFileName": "05_basin_project_report.pdf",
+      "extractionExcerpt": "Basin Water Offset: 15,000 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.619Z",
+      "periodEnd": "2026-07-12T11:38:01.619Z",
+      "proposedAt": "2026-07-12T11:38:01.619Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "ivi68tw6",
+      "siteId": "h2c4qk04",
+      "fieldId": "p2_water_offset_l",
+      "value": 12000,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "rpn1djdv",
+      "evidenceFileName": "04_subbasin_project_report.pdf",
+      "extractionExcerpt": "Sub-Basin Water Offset: 12,000 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.587Z",
+      "periodEnd": "2026-07-12T11:38:01.587Z",
+      "proposedAt": "2026-07-12T11:38:01.587Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "vd7lvbff",
+      "siteId": "h2c4qk04",
+      "fieldId": "reused_water_l",
+      "value": 41000,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "rbw2djh6",
+      "evidenceFileName": "03_recycling_reuse_log.pdf",
+      "extractionExcerpt": "Recycled: 41,000 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.566Z",
+      "periodEnd": "2026-07-12T11:38:01.566Z",
+      "proposedAt": "2026-07-12T11:38:01.566Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "1exko1lb",
+      "siteId": "h2c4qk04",
+      "fieldId": "p1_rainwater_harvested_l",
+      "value": 8500,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "rbw2djh6",
+      "evidenceFileName": "03_recycling_reuse_log.pdf",
+      "extractionExcerpt": "Rainwater Harvested: 8,500 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.566Z",
+      "periodEnd": "2026-07-12T11:38:01.566Z",
+      "proposedAt": "2026-07-12T11:38:01.566Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "iwbjvf5s",
+      "siteId": "h2c4qk04",
+      "fieldId": "wastewater_discharged_l",
+      "value": 318000,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "nj81x11y",
+      "evidenceFileName": "02_wastewater_discharge_record.pdf",
+      "extractionExcerpt": "Wastewater Discharged: 318,000 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.543Z",
+      "periodEnd": "2026-07-12T11:38:01.543Z",
+      "proposedAt": "2026-07-12T11:38:01.543Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    },
+    {
+      "id": "q1555bqa",
+      "siteId": "h2c4qk04",
+      "fieldId": "freshwater_withdrawal_l",
+      "value": 452000,
+      "unit": "L",
+      "status": "verified",
+      "evidenceId": "88wkpta7",
+      "evidenceFileName": "01_water_utility_bill.pdf",
+      "extractionExcerpt": "Total Withdrawal: 452,000 L",
+      "confidence": 0.9,
+      "periodStart": "2026-07-12T11:38:01.171Z",
+      "periodEnd": "2026-07-12T11:38:01.171Z",
+      "proposedAt": "2026-07-12T11:38:01.171Z",
+      "validatedBy": "Priya Nair",
+      "validatedAt": "2026-07-12T11:39:06.687Z",
+      "rejectionReason": null
+    }
+  ],
+  "reports": [
+    {
+      "id": "69hgn7d8",
+      "kind": "cdp",
+      "title": "CDP Water Security Assessment Report — 2026",
+      "status": "generated",
+      "generatedAt": "2026-07-12T11:41:13.320Z",
+      "generatedBy": "Priya Nair",
+      "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<title>CDP Water Security Assessment Report</title>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">\n<style>\n  * { box-sizing: border-box; margin: 0; padding: 0; }\n  body { font-family: 'Inter', ui-sans-serif, Arial, sans-serif; color: #111827; background: #fff; font-size: 12px; line-height: 1.65; -webkit-font-smoothing: antialiased; }\n  @media print { .no-print { display: none !important; } body { font-size: 11px; } .page-break { page-break-before: always; } }\n  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #0f2942 0%, #0e7490 100%); color: #fff; padding: 60px; }\n  .cover-logo { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; opacity: .8; margin-bottom: 48px; }\n  .cover h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; font-weight: 600; letter-spacing: -.01em; line-height: 1.15; margin-bottom: 14px; }\n  .cover .subtitle { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-style: italic; opacity: .85; margin-bottom: 48px; }\n  .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; max-width: 480px; }\n  .cover-meta-item label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; display: block; }\n  .cover-meta-item span { font-size: 14px; font-weight: 600; }\n  .section { padding: 40px 48px; border-bottom: 1px solid #E5E7EB; }\n  .section:last-child { border-bottom: none; }\n  h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 600; color: #111827; letter-spacing: -.01em; margin-bottom: 4px; }\n  .section-label { font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #6B7280; font-weight: 600; margin-bottom: 8px; }\n  .score-box { display: inline-flex; flex-direction: column; align-items: center; padding: 20px 40px; border-radius: 12px; background: #F9FAFB; border: 1px solid #E5E7EB; margin-bottom: 16px; }\n  .caveat { background: #FFF8F0; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 4px; font-size: 11px; color: #92400E; margin: 16px 0; }\n  table { width: 100%; border-collapse: collapse; }\n  th { text-align: left; padding: 8px; background: #F9FAFB; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #6B7280; border-bottom: 1px solid #E5E7EB; }\n  td { font-variant-numeric: tabular-nums; }\n  footer { text-align: center; padding: 20px; font-size: 10px; color: #9CA3AF; border-top: 1px solid #E5E7EB; }\n</style>\n</head>\n<body>\n\n<div class=\"cover page-break\">\n  <div class=\"cover-logo\">Hydris AI · CDP Water Security Assessment</div>\n  <h1>CDP Water Security<br>Assessment Report</h1>\n  <div class=\"subtitle\">CDP Water Security (representative) · 2026</div>\n  <div class=\"cover-meta\">\n    <div class=\"cover-meta-item\"><label>Report Date</label><span>July 12, 2026</span></div>\n    <div class=\"cover-meta-item\"><label>Questions Ready</label><span>3 / 13</span></div>\n    <div class=\"cover-meta-item\"><label>Predicted Band</label><span>D-</span></div>\n    <div class=\"cover-meta-item\"><label>Generated By</label><span>Priya Nair</span></div>\n  </div>\n</div>\n\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 1</div>\n  <h2>Predicted CDP Water Security Score</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Modeled on the public shape of CDP's own Disclosure → Awareness → Management → Leadership methodology, applied to this workspace's evidence-completeness data. See the disclaimer below — this is an internal planning estimate, not an official CDP score.</p>\n  <div class=\"score-box\">\n    <div style=\"font-size:11px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px\">Predicted Band</div>\n    <span style=\"font-size:48px;font-weight:700;color:#DC2626\">D-</span>\n  </div>\n  <table style=\"margin-top:8px;\">\n    <thead><tr><th>Level</th><th>Approved</th><th>Completion</th><th>Status</th></tr></thead>\n    <tbody>\n    <tr style=\"border-bottom:1px solid #F3F4F6;\">\n      <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Disclosure</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">3/8</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">38%</td>\n      <td style=\"padding:7px 8px;font-weight:600;color:#9CA3AF\">Not reached</td>\n    </tr>\n    <tr style=\"border-bottom:1px solid #F3F4F6;\">\n      <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Awareness</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0/2</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0%</td>\n      <td style=\"padding:7px 8px;font-weight:600;color:#9CA3AF\">Not reached</td>\n    </tr>\n    <tr style=\"border-bottom:1px solid #F3F4F6;\">\n      <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Management</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0/2</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0%</td>\n      <td style=\"padding:7px 8px;font-weight:600;color:#9CA3AF\">Not reached</td>\n    </tr>\n    <tr style=\"border-bottom:1px solid #F3F4F6;\">\n      <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Leadership</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n      <td style=\"padding:7px 8px;color:#6B7280\">0%</td>\n      <td style=\"padding:7px 8px;font-weight:600;color:#9CA3AF\">Not reached</td>\n    </tr></tbody>\n  </table>\n  <div class=\"caveat\">Disclosure level has not been reached yet — fewer than 60% of Disclosure-level questions have an approved answer.</div><div class=\"caveat\">Disclosure is not yet unlocked — 3/8 questions approved (60% needed).</div><div class=\"caveat\">4 essential-style item(s) still need an approved answer (GOV-1, GOV-2, TGT-1, TGT-2) — CDP caps scores at B when core disclosures like board oversight, company-wide water accounting, or targets are missing.</div>\n  <div class=\"caveat\" style=\"border-left-color:#6B7280;color:#374151;background:#F3F4F6;\">Predicted score only — an internal estimate derived from this platform's own evidence-completeness data, modeled on the public shape of CDP's Disclosure/Awareness/Management/Leadership methodology. It is not an official CDP score, not a CDP submission, and not affiliated with or endorsed by CDP Worldwide. Covers CDP Water Security only (not Climate Change or Forests).</div>\n</div>\n\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 2</div>\n  <h2>Readiness by Module</h2>\n  <table><thead><tr><th>Module</th><th>Ready</th><th>%</th></tr></thead><tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Governance</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/2</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Risk Assessment</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Business Impact</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Business Strategy</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Targets</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/2</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Water Accounting</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">2/2</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">100%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Water Quality</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Verification</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Value Chain Engagement</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">0/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Community Engagement</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">1/1</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">100%</td>\n      </tr></tbody></table>\n</div>\n\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 3</div>\n  <h2>Question-Level Detail</h2>\n  <table><thead><tr><th>Code</th><th>Module</th><th>Question</th><th>Status</th><th>Evidence</th></tr></thead><tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">GOV-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Governance</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe the board-level (or equivalent) oversight of water-related risks and opportunities.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">GOV-2</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Governance</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe management's role in assessing and managing water-related issues, including reporting frequency to the board.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">RISK-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Risk Assessment</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe the process used to identify, assess, and prioritize water-related risks across owned and operated assets.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Pending approval</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">4</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">RISK-2</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Business Impact</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Disclose any substantive water-related risks identified with the potential for significant business impact.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">STRAT-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Business Strategy</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe how water-related risks and opportunities have influenced business strategy and financial planning.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">TGT-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Targets</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Disclose water-related targets, including scope, boundary, base year, and target year.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">TGT-2</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Targets</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Report progress against active water-related targets for the current reporting period.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">WA-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water Accounting</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Report total water withdrawal by source for the reporting period.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#059669\">Ready</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">WA-2</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water Accounting</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Report total water discharge and consumption for the reporting period.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#059669\">Ready</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">WQ-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water Quality</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Report effluent water quality data and the methodology used to assess pollutant reduction.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Pending approval</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">3</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">VER-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Verification</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Indicate whether reported water figures have received third-party verification or assurance, and to what standard.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">ENG-1</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Value Chain Engagement</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe engagement with suppliers on water-related requirements or assessments.</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">0</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-family:monospace;font-size:10px;color:#6B7280\">ENG-2</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Community Engagement</td>\n        <td style=\"padding:7px 8px;color:#374151;font-size:11px\">Describe engagement with local communities on water access, sanitation, and hygiene (WASH).</td>\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#059669\">Ready</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">2</td>\n      </tr></tbody></table>\n</div>\n\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 4</div>\n  <h2>Improvement Roadmap</h2>\n  <table><thead><tr><th style=\"width:70px\">Priority</th><th>Recommendation</th><th style=\"width:140px\">Evidence Status</th><th>Action</th></tr></thead><tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">GOV-1 — Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Board/committee charter or governance policy document covering water stewardship oversight.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">GOV-2 — Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Management structure document, meeting minutes, or reporting cadence record.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">TGT-1 — Targets</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Board-approved target statement or public commitment document.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">TGT-2 — Targets</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Progress report comparing current-period performance to the stated target.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">RISK-1 — Risk Assessment</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">RISK-2 — Business Impact</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Risk register extract or facility-level water stress assessment.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">STRAT-1 — Business Strategy</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Strategy document, capital allocation record, or board presentation referencing water.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">WQ-1 — Water Quality</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">VER-1 — Verification</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Third-party assurance statement or verification certificate.</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">ENG-1 — Value Chain Engagement</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Supplier water risk assessment or engagement record.</td>\n      </tr></tbody></table>\n</div>\n\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 5</div>\n  <h2>References & Citations</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Every document cited by at least one CDP question, including documents attached automatically by evidence auto-linking.</p>\n  <table><thead><tr><th style=\"width:32px\">#</th><th>Document</th><th>Type</th><th>Cited By</th></tr></thead><tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[1]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">10_wash_access_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">WASH access record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">ENG-2</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[2]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">09_employee_headcount_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Employee headcount record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">ENG-2</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[3]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">08_basin_quality_project.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Basin water quality project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">RISK-1, WQ-1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[4]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">07_subbasin_quality_project.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Sub-basin water quality project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">RISK-1, WQ-1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[5]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">06_water_quality_lab_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water quality lab report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">WQ-1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[6]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">05_basin_project_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Basin project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">RISK-1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[7]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">04_subbasin_project_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Sub-basin project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">RISK-1</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[8]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">02_wastewater_discharge_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Wastewater discharge record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">WA-2</td>\n      </tr>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[9]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">01_water_utility_bill.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water utility bill / meter log</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">WA-1</td>\n      </tr></tbody></table>\n</div>\n\n<footer>\n  Generated by Hydris AI · 2026-07-12T11:41:13.309Z · CDP Water Security only — Climate Change and Forests are out of scope. Not an official CDP submission or score.\n</footer>\n</body>\n</html>",
+      "summary": {
+        "Predicted Band": "D-",
+        "Questions Ready": "3/13"
+      }
+    },
+    {
+      "id": "scrp2wki",
+      "kind": "pwi",
+      "title": "PWI Assessment Report — 2026",
+      "status": "generated",
+      "generatedAt": "2026-07-12T11:39:27.643Z",
+      "generatedBy": "Priya Nair",
+      "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\"/>\n<title>PWI Assessment Report</title>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">\n<style>\n  * { box-sizing: border-box; margin: 0; padding: 0; }\n  body { font-family: 'Inter', ui-sans-serif, Arial, sans-serif; color: #111827; background: #fff; font-size: 12px; line-height: 1.65; -webkit-font-smoothing: antialiased; }\n  @media print {\n    .no-print { display: none !important; }\n    body { font-size: 11px; }\n    .page-break { page-break-before: always; }\n  }\n  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1e3a5f 0%, #2563EB 100%); color: #fff; padding: 60px; }\n  .cover-logo { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; opacity: .8; margin-bottom: 48px; }\n  .cover h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 38px; font-weight: 600; letter-spacing: -.01em; line-height: 1.15; margin-bottom: 14px; }\n  .cover .subtitle { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-style: italic; opacity: .85; margin-bottom: 48px; }\n  .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; max-width: 480px; }\n  .cover-meta-item label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; display: block; }\n  .cover-meta-item span { font-size: 14px; font-weight: 600; }\n  .section { padding: 40px 48px; border-bottom: 1px solid #E5E7EB; }\n  .section:last-child { border-bottom: none; }\n  h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 600; color: #111827; letter-spacing: -.01em; margin-bottom: 4px; }\n  h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; font-weight: 600; color: #374151; margin: 0 0 10px; }\n  .section-label { font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #6B7280; font-weight: 600; margin-bottom: 8px; }\n  .score-box { display: inline-flex; flex-direction: column; align-items: center; padding: 20px 32px; border-radius: 12px; background: #F9FAFB; border: 1px solid #E5E7EB; margin-bottom: 16px; }\n  .caveat { background: #FFF8F0; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 4px; font-size: 11px; color: #92400E; margin: 16px 0; }\n  .strength { background: #ECFDF5; border-left: 3px solid #059669; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #065F46; margin-bottom: 6px; }\n  .improvement { background: #FFFBEB; border-left: 3px solid #D97706; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #78350F; margin-bottom: 6px; }\n  .risk { background: #FEF2F2; border-left: 3px solid #DC2626; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #991B1B; margin-bottom: 6px; }\n  table { width: 100%; border-collapse: collapse; }\n  th { text-align: left; padding: 8px; background: #F9FAFB; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #6B7280; border-bottom: 1px solid #E5E7EB; }\n  td { font-variant-numeric: tabular-nums; }\n  .badge { display: inline-block; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 600; }\n  footer { text-align: center; padding: 20px; font-size: 10px; color: #9CA3AF; border-top: 1px solid #E5E7EB; }\n</style>\n</head>\n<body>\n\n<!-- COVER PAGE -->\n<div class=\"cover page-break\">\n  <div class=\"cover-logo\">Hydris AI · PWI Assessment Platform</div>\n  <h1>Positive Water Impact<br>Assessment Report</h1>\n  <div class=\"subtitle\">Evidence-Based Water Stewardship Disclosure</div>\n  <div class=\"cover-meta\">\n    <div class=\"cover-meta-item\"><label>Assessment Period</label><span>2026</span></div>\n    <div class=\"cover-meta-item\"><label>Report Date</label><span>July 12, 2026</span></div>\n    <div class=\"cover-meta-item\"><label>Sites Assessed</label><span>1</span></div>\n    <div class=\"cover-meta-item\"><label>Generated By</label><span>Priya Nair</span></div>\n  </div>\n</div>\n\n<!-- EXECUTIVE SUMMARY -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 1</div>\n  <h2>Executive Summary</h2>\n  <p style=\"color:#6B7280;margin-bottom:24px;\">This report presents the Positive Water Impact (PWI) assessment for the reporting period based exclusively on uploaded and verified evidence. All scores are derived from the Hydris Water Stewardship Methodology (3 Pillars × 3 Dimensions). No values are estimated or fabricated.</p>\n\n  <div class=\"score-box\">\n    <div style=\"font-size:11px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px\">Portfolio PWI Score</div>\n    <span style=\"font-size:48px;font-weight:700;color:#D97706\">71.9%</span>\n    \n  </div>\n\n  <div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;\">\n    <div style=\"padding:12px;background:#F9FAFB;border-radius:8px;text-align:center;\">\n      <div style=\"font-size:10px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em\">Evidence Files</div>\n      <div style=\"font-size:22px;font-weight:700;color:#111827;margin-top:4px\">12</div>\n    </div>\n    <div style=\"padding:12px;background:#F9FAFB;border-radius:8px;text-align:center;\">\n      <div style=\"font-size:10px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em\">Verified Fields</div>\n      <div style=\"font-size:22px;font-weight:700;color:#059669;margin-top:4px\">18</div>\n    </div>\n    <div style=\"padding:12px;background:#F9FAFB;border-radius:8px;text-align:center;\">\n      <div style=\"font-size:10px;color:#6B7280;text-transform:uppercase;letter-spacing:.06em\">Pending Validation</div>\n      <div style=\"font-size:22px;font-weight:700;color:#D97706;margin-top:4px\">0</div>\n    </div>\n  </div>\n\n  <div class=\"caveat\">\n    <strong>Important:</strong> This report reflects only the data that has been uploaded to and verified within the Hydris PWI platform. Missing evidence is explicitly marked. Any score showing \"Unable to Calculate\" or \"Insufficient Evidence\" indicates absent or unverified data — not a zero score.\n  </div>\n</div>\n\n<!-- PWI SCORE BREAKDOWN -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 2</div>\n  <h2>PWI Score Breakdown</h2>\n  <p style=\"color:#6B7280;margin-bottom:20px;\">Scores across the 3 Pillars (Site, Sub-Basin, Basin) × 3 Dimensions (Availability, Accessibility, Water Quality). Each cell is calculated from verified evidence only.</p>\n  \n      <div style=\"margin-bottom:28px;\">\n        <h4 style=\"font-size:13px;font-weight:600;color:#374151;margin:0 0 10px\">Riverton Facility A — Riverton Basin</h4>\n        <table style=\"width:100%;border-collapse:collapse;font-size:11px;\">\n          <thead>\n            <tr style=\"background:#F9FAFB;border-bottom:1px solid #E5E7EB;\">\n              <th style=\"text-align:left;padding:6px 8px;font-weight:600;color:#6B7280;text-transform:uppercase;font-size:10px;letter-spacing:.05em\">Dimension</th>\n              <th style=\"text-align:right;padding:6px 8px;font-weight:600;color:#6B7280;text-transform:uppercase;font-size:10px;letter-spacing:.05em\">Site</th><th style=\"text-align:right;padding:6px 8px;font-weight:600;color:#6B7280;text-transform:uppercase;font-size:10px;letter-spacing:.05em\">Sub-Basin</th><th style=\"text-align:right;padding:6px 8px;font-weight:600;color:#6B7280;text-transform:uppercase;font-size:10px;letter-spacing:.05em\">Basin</th>\n              <th style=\"text-align:right;padding:6px 8px;font-weight:600;color:#6B7280;text-transform:uppercase;font-size:10px;letter-spacing:.05em\">Weight</th>\n            </tr>\n          </thead>\n          <tbody>\n            \n              <tr style=\"border-bottom:1px solid #F3F4F6;\">\n                <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Availability</td>\n                <td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#059669\">100%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#059669\">100%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#059669\">100%</td>\n                <td style=\"text-align:right;padding:7px 8px;color:#6B7280\">40%</td>\n              </tr>\n            \n              <tr style=\"border-bottom:1px solid #F3F4F6;\">\n                <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Accessibility</td>\n                <td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#059669\">98%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#D97706\">55%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#D97706\">67%</td>\n                <td style=\"text-align:right;padding:7px 8px;color:#6B7280\">30%</td>\n              </tr>\n            \n              <tr style=\"border-bottom:1px solid #F3F4F6;\">\n                <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Water Quality</td>\n                <td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#059669\">100%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#DC2626\">0%</td><td style=\"text-align:right;padding:7px 8px;font-weight:600;color:#DC2626\">0%</td>\n                <td style=\"text-align:right;padding:7px 8px;color:#6B7280\">30%</td>\n              </tr>\n            \n            <tr style=\"background:#F9FAFB;font-weight:600;\">\n              <td style=\"padding:8px;color:#111827\">Pillar Score</td>\n              <td style=\"text-align:right;padding:8px;color:#059669\">99%</td><td style=\"text-align:right;padding:8px;color:#D97706\">57%</td><td style=\"text-align:right;padding:8px;color:#D97706\">60%</td>\n              <td></td>\n            </tr>\n          </tbody>\n        </table>\n        <div style=\"margin-top:8px;padding:8px 10px;background:#F9FAFB;border-radius:6px;font-size:11px;color:#374151;\">\n          <strong>Site PWI Score:</strong>\n          <span style=\"margin-left:8px;font-size:18px;font-weight:700;color:#D97706\">\n            72%\n          </span>\n          \n        </div>\n      </div>\n    \n</div>\n\n<!-- EVIDENCE SUMMARY -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 3</div>\n  <h2>Evidence Summary</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Every indicator value below is traceable to an uploaded evidence document. Values marked \"awaiting evidence\" or \"proposed\" have not yet been Admin-validated and do not contribute to the current PWI score.</p>\n  <table>\n        <thead>\n          <tr>\n            <th>Indicator</th>\n            <th>Value</th>\n            <th>Status</th>\n            <th>Confidence</th>\n            <th>Source Document</th>\n          </tr>\n        </thead>\n        <tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Reused Water (recycled + reclaimed/grey)</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">7,844 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">Manual</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">11_recycling_log_low_confidence.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">People given WASH access — sub-basin</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">220 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">10_wash_access_record.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">People given WASH access — basin</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">267 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">10_wash_access_record.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Employees with WASH access</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">195 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">09_employee_headcount_record.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">P3 Basin pollutant removed</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">60 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">08_basin_quality_project.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">P2 Sub-Basin pollutant removed</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">45 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">07_subbasin_quality_project.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Influent TSS</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">180 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Influent Total-N</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">40 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Influent Total-P</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">8 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Effluent TSS</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">15 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Effluent Total-N</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">6 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Effluent Total-P</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">1 </td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">06_water_quality_lab_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">P3 Basin Water Offset</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">15,000 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">05_basin_project_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">P2 Sub-Basin Water Offset</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">12,000 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">04_subbasin_project_report.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Reused Water (recycled + reclaimed/grey)</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">41,000 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">03_recycling_reuse_log.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">On-site Rainwater Harvested</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">8,500 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">03_recycling_reuse_log.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Wastewater Discharged</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">318,000 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">02_wastewater_discharge_record.pdf</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151\">Freshwater Withdrawal</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">452,000 L</td>\n        <td style=\"padding:7px 8px;font-weight:600;color:#059669\">verified</td>\n        <td style=\"padding:7px 8px;color:#6B7280\">90%</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">01_water_utility_bill.pdf</td>\n      </tr>\n    </tbody>\n      </table>\n</div>\n\n<!-- AI FINDINGS -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 4</div>\n  <h2>Assessment Findings</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Findings derived exclusively from uploaded evidence and calculated scores. No findings are invented.</p>\n\n  <h3 style=\"margin-top:16px\">Key Strengths</h3><div class=\"strength\">Site Availability at Riverton Facility A: score 100% — strong evidence of benefit.</div><div class=\"strength\">Site Accessibility at Riverton Facility A: score 98% — strong evidence of benefit.</div><div class=\"strength\">Site Water Quality at Riverton Facility A: score 100% — strong evidence of benefit.</div><div class=\"strength\">Sub-Basin Availability at Riverton Facility A: score 100% — strong evidence of benefit.</div><div class=\"strength\">Basin Availability at Riverton Facility A: score 100% — strong evidence of benefit.</div>\n  <h3 style=\"margin-top:16px\">Areas Requiring Improvement</h3><div class=\"improvement\">Sub-Basin Water Quality at Riverton Facility A: only 0% of target. Additional evidence or intervention needed.</div><div class=\"improvement\">Basin Water Quality at Riverton Facility A: only 0% of target. Additional evidence or intervention needed.</div>\n  \n  \n</div>\n\n<!-- IMPROVEMENT ROADMAP -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 5</div>\n  <h2>Improvement Roadmap</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Evidence-grounded improvement recommendations. No recommendation is invented — each derives from a calculable gap or missing evidence state.</p>\n  <table>\n        <thead>\n          <tr>\n            <th style=\"width:70px\">Priority</th>\n            <th>Recommendation</th>\n            <th style=\"width:130px\">Group</th>\n            <th style=\"width:130px\">Evidence Status</th>\n            <th>Action</th>\n          </tr>\n        </thead>\n        <tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Critical</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">Sub-Basin Water Quality — Riverton Facility A</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Verify that the uploaded values reflect the most recent reporting period</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#DC2626\">Critical</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">Basin Water Quality — Riverton Facility A</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Verify that the uploaded values reflect the most recent reporting period</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">Sub-Basin Accessibility — Riverton Facility A</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Social</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Verify that the uploaded values reflect the most recent reporting period</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">Basin Accessibility — Riverton Facility A</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Social</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Verify that the uploaded values reflect the most recent reporting period</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">Site Accessibility — Riverton Facility A</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Social</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Verify that the uploaded values reflect the most recent reporting period</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">GOV-1 — Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Board/committee charter or governance policy document covering water stewardship oversight.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">GOV-2 — Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Governance</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Management structure document, meeting minutes, or reporting cadence record.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">TGT-1 — Targets</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Board-approved target statement or public commitment document.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">TGT-2 — Targets</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Progress report comparing current-period performance to the stated target.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">WA-1 — Water Accounting</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Documentation & Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#D97706\">Medium</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">WA-2 — Water Accounting</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Documentation & Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">RISK-1 — Risk Assessment</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">RISK-2 — Business Impact</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Environmental</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Risk register extract or facility-level water stress assessment.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">STRAT-1 — Business Strategy</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Operations</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Insufficient Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Upload the required evidence: Strategy document, capital allocation record, or board presentation referencing water.</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;font-weight:600;font-size:10px;color:#6B7280\">Low</td>\n        <td style=\"padding:7px 8px;font-size:11px;font-weight:500;color:#374151\">WQ-1 — Water Quality</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Documentation & Evidence</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#6B7280\">Partially Evidenced</td>\n        <td style=\"padding:7px 8px;font-size:10px;color:#374151\">Generate a draft answer from the linked evidence on the CDP page</td>\n      </tr>\n    </tbody>\n      </table>\n</div>\n\n<!-- CITATIONS -->\n<div class=\"section page-break\">\n  <div class=\"section-label\">Section 6</div>\n  <h2>References & Citations</h2>\n  <p style=\"color:#6B7280;margin-bottom:16px;\">Every document that contributed a verified data point to this assessment. Documents with no verified fields (e.g. narrative evidence) are not listed here.</p>\n  <table>\n        <thead>\n          <tr>\n            <th style=\"width:32px\">#</th>\n            <th>Document Name</th>\n            <th>Type</th>\n            <th>Indicators Supported</th>\n            <th style=\"width:80px\">Avg. Confidence</th>\n          </tr>\n        </thead>\n        <tbody>\n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[1]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">11_recycling_log_low_confidence.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Recycling / reuse log</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Reused Water (recycled + reclaimed/grey)</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">80%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[2]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">10_wash_access_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">WASH access record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">People given WASH access — sub-basin, People given WASH access — basin</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[3]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">09_employee_headcount_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Employee headcount record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Employees with WASH access</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[4]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">08_basin_quality_project.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Basin water quality project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">P3 Basin pollutant removed</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[5]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">07_subbasin_quality_project.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Sub-basin water quality project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">P2 Sub-Basin pollutant removed</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[6]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">06_water_quality_lab_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water quality lab report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Influent TSS, Influent Total-N, Influent Total-P, Effluent TSS, Effluent Total-N, Effluent Total-P</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[7]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">05_basin_project_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Basin project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">P3 Basin Water Offset</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[8]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">04_subbasin_project_report.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Sub-basin project report</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">P2 Sub-Basin Water Offset</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[9]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">03_recycling_reuse_log.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Recycling / reuse log</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Reused Water (recycled + reclaimed/grey), On-site Rainwater Harvested</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[10]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">02_wastewater_discharge_record.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Wastewater discharge record</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Wastewater Discharged</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    \n      <tr style=\"border-bottom:1px solid #F3F4F6;\">\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">[11]</td>\n        <td style=\"padding:7px 8px;font-weight:500;color:#374151;font-size:11px\">01_water_utility_bill.pdf</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Water utility bill / meter log</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">Freshwater Withdrawal</td>\n        <td style=\"padding:7px 8px;color:#6B7280;font-size:10px\">90%</td>\n      </tr>\n    </tbody>\n      </table>\n</div>\n\n<footer>\n  Generated by Hydris AI PWI Assessment Platform · 2026-07-12T11:39:27.631Z · All scores derived from verified evidence only. This report does not constitute official PWI certification.\n</footer>\n</body>\n</html>",
+      "summary": {
+        "Portfolio Score": "71.9%",
+        "Sites": "1",
+        "Verified Fields": "18"
+      }
+    }
+  ]
 }

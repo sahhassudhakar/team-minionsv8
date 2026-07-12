@@ -19,10 +19,10 @@ import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/lib/auth-store";
 import type { UserRole } from "@/lib/types";
 
-const ROLE_LABEL: Record<UserRole, string> = {
+export const ROLE_LABEL: Record<UserRole, string> = {
   admin: "Admin",
   auditor: "Auditor",
-  store_manager: "Store Manager",
+  store_manager: "Floor Manager",
 };
 
 const NAV_ITEMS: { href: string; label: string; icon: typeof LayoutDashboard; roles: UserRole[] }[] = [

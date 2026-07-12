@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/page-header";
 import { EmptyState } from "@/components/empty-state";
 import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/status-badge";
+import { ROLE_LABEL } from "@/components/sidebar-nav";
 import { useAppStore } from "@/lib/store";
 import { useAuthStore } from "@/lib/auth-store";
 import { cn } from "@/lib/utils";
@@ -363,7 +364,7 @@ function UsersTab({
           <div>
             <label className="text-xs font-medium text-text-secondary">Role</label>
             <select value={role} onChange={(e) => setRole(e.target.value as UserRole)} className="mt-1 w-full rounded-md border border-border-strong px-2.5 py-1.5 text-sm focus:border-accent-primary focus:outline-none">
-              <option value="store_manager">Store Manager</option>
+              <option value="store_manager">Floor Manager</option>
               <option value="auditor">Auditor</option>
               <option value="admin">Admin</option>
             </select>
@@ -412,7 +413,7 @@ function UsersTab({
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <StatusBadge tone="neutral">{u.role.replace("_", " ")}</StatusBadge>
+                  <StatusBadge tone="neutral">{ROLE_LABEL[u.role as UserRole]}</StatusBadge>
                   <button onClick={() => handleDelete(u.id)} className="rounded p-1 text-text-tertiary hover:bg-bg-surface-sunken hover:text-status-insufficient">
                     <Trash2 className="size-3.5" />
                   </button>

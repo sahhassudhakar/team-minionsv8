@@ -6,34 +6,48 @@ import { UploadCloud, FileText, X, Check } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { DOCUMENT_CATEGORIES } from "@/lib/water-extraction";
+import { DOCUMENT_CATEGORIES, ADMIN_DOCUMENT_TYPES } from "@/lib/water-extraction";
 import type { Site } from "@/lib/water-types";
 
 interface PendingFile {
   file: File;
   progress: number;
   done: boolean;
-  /** Only meaningful when requireWaterContext is true — the document type this specific file will be filed and extracted under. */
+  /** Only meaningful when mode !== "none" — the document type this specific file will be filed (and, in "water" mode, extracted) under. */
   categoryId: string;
 }
+
+/**
+ * - "none": no site/type step — straight to upload (unused today, kept for API completeness).
+ * - "water": Floor Manager flow — Site + a PWI extraction category REQUIRED per file, feeds the questionnaire field auto-fill pipeline.
+ * - "generic": Admin flow — Site optional (company-wide evidence is valid) + a plain classification label per file, purely for `documentType`/`businessUnit` — does not change extraction.
+ */
+export type UploadContextMode = "none" | "water" | "generic";
 
 export function UploadEvidenceDialog({
   open,
   onOpenChange,
   onUploaded,
   sites,
-  requireWaterContext = false,
+  mode = "none",
   defaultSiteId,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
-  onUploaded: (files: File[], waterContext?: { siteId: string; categoryIds: string[] }) => void | Promise<void>;
+  onUploaded: (
+    files: File[],
+    waterContext?: { siteId: string; categoryIds: string[] },
+    adminContext?: { siteId: string; documentTypes: string[] }
+  ) => void | Promise<void>;
   sites?: Site[];
-  /** True for Store Manager uploads — requires a Site + a Document Category per file before uploading, so extraction can target the right PWI questionnaire fields for each document. */
-  requireWaterContext?: boolean;
+  mode?: UploadContextMode;
   defaultSiteId?: string;
 }) {
   const MAX_FILES = 15;
+  const requireWaterContext = mode === "water";
+  const requireGenericContext = mode === "generic";
+  const showContextStep = requireWaterContext || requireGenericContext;
+  const typeOptions = requireWaterContext ? DOCUMENT_CATEGORIES.map((c) => ({ id: c.id, label: c.label, description: c.description })) : ADMIN_DOCUMENT_TYPES.map((t) => ({ id: t, label: t, description: undefined }));
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [files, setFiles] = useState<PendingFile[]>([]);
@@ -96,6 +110,7 @@ export function UploadEvidenceDialog({
 
   const allDone = files.length > 0 && files.every((f) => f.done);
   const allCategorized = files.length > 0 && files.every((f) => f.categoryId);
+  const siteSatisfied = requireWaterContext ? !!siteId : true; // generic mode: site is optional (company-wide evidence is valid)
 
   return (
     <Dialog
@@ -105,7 +120,7 @@ export function UploadEvidenceDialog({
         if (!v) reset();
       }}
     >
-      <DialogContent size={requireWaterContext ? "lg" : "md"}>
+      <DialogContent size={showContextStep ? "lg" : "md"}>
         <DialogHeader>
           <DialogTitle>Upload Evidence</DialogTitle>
         </DialogHeader>
@@ -195,13 +210,18 @@ export function UploadEvidenceDialog({
                     onChange={(e) => setSiteId(e.target.value)}
                     className="mt-1 w-full rounded-md border border-border-strong px-2.5 py-2 text-sm focus:border-accent-primary focus:outline-none"
                   >
-                    <option value="">Select a site…</option>
+                    <option value="">{requireGenericContext ? "Company-wide (not site-specific)" : "Select a site…"}</option>
                     {sites?.map((s) => (
                       <option key={s.id} value={s.id}>
                         {s.name} — {s.basinName}
                       </option>
                     ))}
                   </select>
+                  {requireGenericContext && (
+                    <p className="mt-1 text-xs text-text-tertiary">
+                      Leave as &quot;Company-wide&quot; for evidence that isn&apos;t tied to one site (e.g. board policies, group-level disclosures).
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -212,7 +232,9 @@ export function UploadEvidenceDialog({
                     </span>
                   </div>
                   <p className="mt-0.5 text-xs text-text-tertiary">
-                    Each file is extracted against its own type, so a mixed batch (a bill and a lab report together) reads correctly.
+                    {requireWaterContext
+                      ? "Each file is extracted against its own type, so a mixed batch (a bill and a lab report together) reads correctly."
+                      : "Classifying each file helps evidence get automatically matched to the right questions later."}
                   </p>
 
                   {files.length > 1 && (
@@ -222,7 +244,7 @@ export function UploadEvidenceDialog({
                       className="mt-2 w-full rounded-md border border-dashed border-border-strong bg-bg-surface-sunken px-2.5 py-1.5 text-xs text-text-secondary focus:border-accent-primary focus:outline-none"
                     >
                       <option value="">Apply one type to all {files.length} files…</option>
-                      {DOCUMENT_CATEGORIES.map((c) => (
+                      {typeOptions.map((c) => (
                         <option key={c.id} value={c.id}>
                           {c.label}
                         </option>
@@ -232,7 +254,7 @@ export function UploadEvidenceDialog({
 
                   <div className="mt-2 max-h-[280px] space-y-2 overflow-y-auto pr-1">
                     {files.map((f, idx) => {
-                      const category = DOCUMENT_CATEGORIES.find((c) => c.id === f.categoryId);
+                      const category = typeOptions.find((c) => c.id === f.categoryId);
                       return (
                         <div key={idx} className="rounded-md border border-border-subtle px-3 py-2.5">
                           <div className="flex items-center gap-2">
@@ -248,13 +270,13 @@ export function UploadEvidenceDialog({
                             )}
                           >
                             <option value="">Select a type…</option>
-                            {DOCUMENT_CATEGORIES.map((c) => (
+                            {typeOptions.map((c) => (
                               <option key={c.id} value={c.id}>
                                 {c.label}
                               </option>
                             ))}
                           </select>
-                          {category && <p className="mt-1 text-xs text-text-tertiary">{category.description}</p>}
+                          {category?.description && <p className="mt-1 text-xs text-text-tertiary">{category.description}</p>}
                         </div>
                       );
                     })}
@@ -311,9 +333,9 @@ export function UploadEvidenceDialog({
               </Button>
               <Button
                 disabled={files.length === 0}
-                onClick={() => (requireWaterContext ? setStep(2) : startUpload())}
+                onClick={() => (showContextStep ? setStep(2) : startUpload())}
               >
-                {requireWaterContext ? "Next" : `Upload ${files.length > 0 ? `(${files.length})` : ""}`}
+                {showContextStep ? "Next" : `Upload ${files.length > 0 ? `(${files.length})` : ""}`}
               </Button>
             </>
           )}
@@ -322,7 +344,7 @@ export function UploadEvidenceDialog({
               <Button variant="ghost" onClick={() => setStep(1)}>
                 Back
               </Button>
-              <Button disabled={!siteId || !allCategorized} onClick={startUpload}>
+              <Button disabled={!siteSatisfied || !allCategorized} onClick={startUpload}>
                 Upload ({files.length})
               </Button>
             </>
@@ -335,7 +357,8 @@ export function UploadEvidenceDialog({
                 try {
                   await onUploaded(
                     files.map((f) => f.file),
-                    requireWaterContext ? { siteId, categoryIds: files.map((f) => f.categoryId) } : undefined
+                    requireWaterContext ? { siteId, categoryIds: files.map((f) => f.categoryId) } : undefined,
+                    requireGenericContext ? { siteId, documentTypes: files.map((f) => f.categoryId) } : undefined
                   );
                   onOpenChange(false);
                   reset();

@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "email, password, name, and role are required." }, { status: 400 });
   }
   if (body.role === "store_manager" && !body.siteId) {
-    return NextResponse.json({ error: "A Store Manager account must be assigned to a site." }, { status: 400 });
+    return NextResponse.json({ error: "A Floor Manager account must be assigned to a site." }, { status: 400 });
   }
 
   const result = createUser({

@@ -7,10 +7,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { EmptyState } from "@/components/empty-state";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { PWIFieldVerificationModal } from "@/components/pwi-field-verification-modal";
+import { EvidenceVerificationPanel } from "@/components/evidence-verification-panel";
 import { useAppStore } from "@/lib/store";
 import { useAuthStore } from "@/lib/auth-store";
 import { computeSitePWI, computePortfolioPWI } from "@/lib/pwi-methodology";
-import { PILLAR_LABEL, DIMENSION_LABEL, QUESTIONNAIRE_FIELD_META } from "@/lib/water-types";
+import { PILLAR_LABEL, DIMENSION_LABEL } from "@/lib/water-types";
 import type { ComputedFigure, QuestionnaireField } from "@/lib/water-types";
 import { cn } from "@/lib/utils";
 
@@ -60,6 +61,8 @@ export default function PWIPage() {
   const validateField = useAppStore((s) => s.validateQuestionnaireField);
   const rejectField = useAppStore((s) => s.rejectQuestionnaireField);
   const saveManual = useAppStore((s) => s.saveQuestionnaireFieldManually);
+  const bulkValidate = useAppStore((s) => s.bulkValidateQuestionnaireFields);
+  const bulkReject = useAppStore((s) => s.bulkRejectQuestionnaireFields);
 
   const isAdmin = user?.role === "admin";
   const myAssignedSite = sites.find((s) => s.storeManagerEmail === user?.email);
@@ -146,32 +149,20 @@ export default function PWIPage() {
                   : `${pendingFields.length + needsManualFields.length} field(s) awaiting Admin validation`}
               </h2>
               {isAdmin && (
-                <div className="space-y-2">
-                  {[...pendingFields, ...needsManualFields].map((f) => {
-                    const meta = QUESTIONNAIRE_FIELD_META[f.fieldId];
-                    const isManual = f.status === "awaiting_evidence";
-                    return (
-                      <button
-                        key={f.id}
-                        onClick={() => openReview(f)}
-                        className={cn(
-                          "flex w-full items-center justify-between rounded-lg border px-4 py-3 text-left transition-colors hover:bg-bg-surface-sunken",
-                          isManual ? "border-status-insufficient/30 bg-status-insufficient-bg" : "border-border-subtle bg-bg-surface"
-                        )}
-                      >
-                        <div className="min-w-0">
-                          <p className="text-sm font-medium text-text-primary">{meta.label}</p>
-                          <p className="text-xs text-text-tertiary">
-                            {isManual
-                              ? `Low-confidence extraction from ${f.evidenceFileName} — needs manual entry`
-                              : `${f.value?.toLocaleString()} ${f.unit} — from ${f.evidenceFileName}`}
-                          </p>
-                        </div>
-                        <span className="shrink-0 text-xs font-medium text-accent-primary">Review →</span>
-                      </button>
-                    );
-                  })}
-                </div>
+                <EvidenceVerificationPanel
+                  fields={[...pendingFields, ...needsManualFields]}
+                  onBulkValidate={(fieldIds, edits) => {
+                    if (!actor) return;
+                    if (fieldIds.length === 1) {
+                      validateField(fieldIds[0], actor, edits[fieldIds[0]]);
+                    } else {
+                      bulkValidate(fieldIds, actor, edits);
+                    }
+                  }}
+                  onBulkReject={(fieldIds, reason) => actor && bulkReject(fieldIds, actor, reason)}
+                  onManualEntry={(fieldId, value) => actor && saveManual(fieldId, value, actor)}
+                  onOpenDetail={openReview}
+                />
               )}
             </div>
           )}

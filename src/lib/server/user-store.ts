@@ -31,7 +31,7 @@ function ensureStore(): StoredUser[] {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
   if (!fs.existsSync(USERS_FILE)) {
     // Bootstrap exactly one Admin account so there is always a way to log in
-    // on a fresh checkout. Every other account (Auditor, Store Manager) is
+    // on a fresh checkout. Every other account (Auditor, Floor Manager) is
     // created by this Admin via the Admin UI — never hardcoded beyond this
     // single bootstrap seed.
     const bootstrapAdmin: StoredUser = {

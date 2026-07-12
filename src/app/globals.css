@@ -44,13 +44,27 @@
   --color-status-neutral-bg: var(--status-neutral-bg);
   --color-ai-advisory: var(--ai-advisory);
   --color-ai-advisory-bg: var(--ai-advisory-bg);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
 }
 
 body {
   background: var(--bg-canvas);
   color: var(--text-primary);
-  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Reserved for page titles, section headers, and report headings — a
+ * distinct serif display face (rather than reusing the body sans at a
+ * bigger size) is what gives a page a "designed report" hierarchy instead
+ * of a flat, uniform, single-typeface look.
+ */
+.font-display {
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 .tabular-nums {

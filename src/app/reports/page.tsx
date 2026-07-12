@@ -3,19 +3,22 @@
 import { useMemo, useState, useRef } from "react";
 import {
   Download, FileText, CheckCircle2, AlertTriangle, Info,
-  Droplets, BarChart3, ClipboardList, Shield
+  Droplets, BarChart3, ClipboardList, Shield, Search, Eye, RefreshCw, Trash2, Cloud,
 } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { EmptyState } from "@/components/empty-state";
+import { StatusBadge } from "@/components/status-badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useAppStore } from "@/lib/store";
 import { useAuthStore } from "@/lib/auth-store";
 import { computeSitePWI, computePortfolioPWI } from "@/lib/pwi-methodology";
 import { buildPwiRoadmap, buildCdpRoadmap } from "@/lib/roadmap-engine";
+import { buildCdpReportHTML } from "@/lib/cdp-report";
+import { predictCdpWaterScore } from "@/lib/cdp-score-engine";
 import { PILLAR_LABEL, DIMENSION_LABEL, DIMENSION_WEIGHT, QUESTIONNAIRE_FIELD_META } from "@/lib/water-types";
 import type { Site, QuestionnaireField } from "@/lib/water-types";
-import type { EvidenceObject } from "@/lib/types";
+import type { EvidenceObject, ReportRecord } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -186,33 +189,37 @@ function buildReportHTML(
 <head>
 <meta charset="UTF-8"/>
 <title>PWI Assessment Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #111827; background: #fff; font-size: 12px; line-height: 1.6; }
+  body { font-family: 'Inter', ui-sans-serif, Arial, sans-serif; color: #111827; background: #fff; font-size: 12px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
   @media print {
     .no-print { display: none !important; }
     body { font-size: 11px; }
     .page-break { page-break-before: always; }
   }
   .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1e3a5f 0%, #2563EB 100%); color: #fff; padding: 60px; }
-  .cover-logo { font-size: 13px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; opacity: .8; margin-bottom: 48px; }
-  .cover h1 { font-size: 36px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 12px; }
-  .cover .subtitle { font-size: 16px; opacity: .8; margin-bottom: 48px; }
+  .cover-logo { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; opacity: .8; margin-bottom: 48px; }
+  .cover h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 38px; font-weight: 600; letter-spacing: -.01em; line-height: 1.15; margin-bottom: 14px; }
+  .cover .subtitle { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-style: italic; opacity: .85; margin-bottom: 48px; }
   .cover-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; max-width: 480px; }
-  .cover-meta-item label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; opacity: .6; display: block; }
+  .cover-meta-item label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; display: block; }
   .cover-meta-item span { font-size: 14px; font-weight: 600; }
   .section { padding: 40px 48px; border-bottom: 1px solid #E5E7EB; }
   .section:last-child { border-bottom: none; }
-  h2 { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px; }
-  h3 { font-size: 14px; font-weight: 700; color: #374151; margin: 0 0 10px; }
-  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: #6B7280; font-weight: 600; margin-bottom: 6px; }
+  h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 600; color: #111827; letter-spacing: -.01em; margin-bottom: 4px; }
+  h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; font-weight: 600; color: #374151; margin: 0 0 10px; }
+  .section-label { font-family: 'Inter', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: #6B7280; font-weight: 600; margin-bottom: 8px; }
   .score-box { display: inline-flex; flex-direction: column; align-items: center; padding: 20px 32px; border-radius: 12px; background: #F9FAFB; border: 1px solid #E5E7EB; margin-bottom: 16px; }
   .caveat { background: #FFF8F0; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 4px; font-size: 11px; color: #92400E; margin: 16px 0; }
   .strength { background: #ECFDF5; border-left: 3px solid #059669; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #065F46; margin-bottom: 6px; }
   .improvement { background: #FFFBEB; border-left: 3px solid #D97706; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #78350F; margin-bottom: 6px; }
   .risk { background: #FEF2F2; border-left: 3px solid #DC2626; padding: 8px 12px; border-radius: 4px; font-size: 11px; color: #991B1B; margin-bottom: 6px; }
   table { width: 100%; border-collapse: collapse; }
-  th { text-align: left; padding: 8px; background: #F9FAFB; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #6B7280; border-bottom: 1px solid #E5E7EB; }
+  th { text-align: left; padding: 8px; background: #F9FAFB; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #6B7280; border-bottom: 1px solid #E5E7EB; }
+  td { font-variant-numeric: tabular-nums; }
   .badge { display: inline-block; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 600; }
   footer { text-align: center; padding: 20px; font-size: 10px; color: #9CA3AF; border-top: 1px solid #E5E7EB; }
 </style>
@@ -366,19 +373,266 @@ function buildReportHTML(
 // Page component
 // ---------------------------------------------------------------------------
 
+type SortMode = "newest" | "oldest";
+type StatusFilter = "all" | ReportRecord["status"];
+
+/** Renders a report's HTML into an off-screen iframe and triggers the print dialog — lets "Download" work directly from a list row without first opening Preview. */
+function printReportHTML(html: string) {
+  const iframe = document.createElement("iframe");
+  iframe.style.position = "fixed";
+  iframe.style.right = "0";
+  iframe.style.bottom = "0";
+  iframe.style.width = "0";
+  iframe.style.height = "0";
+  iframe.style.border = "0";
+  document.body.appendChild(iframe);
+  iframe.onload = () => {
+    iframe.contentWindow?.print();
+    setTimeout(() => document.body.removeChild(iframe), 1000);
+  };
+  iframe.srcdoc = html;
+}
+
+function formatDateTime(iso: string) {
+  return new Date(iso).toLocaleString(undefined, { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+/**
+ * "11. Separate Report Sections" — one of these renders "PWI Assessment
+ * Reports" and the other "CDP Assessment Reports". Each is a fully
+ * self-contained list: search, status filter, sort, preview, download,
+ * delete, regenerate — so users always know which section a report
+ * belongs to instead of one undifferentiated report list.
+ */
+function ReportSection({
+  kind,
+  title,
+  icon: Icon,
+  accentClass,
+  reports,
+  canManage,
+  canGenerate,
+  generateLabel,
+  disabledReason,
+  onGenerate,
+  onRegenerate,
+  onDelete,
+  generating,
+}: {
+  kind: ReportRecord["kind"];
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  accentClass: string;
+  reports: ReportRecord[];
+  canManage: boolean;
+  canGenerate: boolean;
+  generateLabel: string;
+  disabledReason?: string;
+  onGenerate: () => void;
+  onRegenerate: (report: ReportRecord) => void;
+  onDelete: (report: ReportRecord) => void;
+  generating: boolean;
+}) {
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [sort, setSort] = useState<SortMode>("newest");
+  const [previewing, setPreviewing] = useState<ReportRecord | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<ReportRecord | null>(null);
+  const previewIframeRef = useRef<HTMLIFrameElement>(null);
+
+  const filtered = useMemo(() => {
+    let list = reports.filter((r) => r.kind === kind);
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      list = list.filter((r) => r.title.toLowerCase().includes(q) || r.generatedBy.toLowerCase().includes(q));
+    }
+    if (statusFilter !== "all") list = list.filter((r) => r.status === statusFilter);
+    list = [...list].sort((a, b) => {
+      const diff = new Date(a.generatedAt).getTime() - new Date(b.generatedAt).getTime();
+      return sort === "newest" ? -diff : diff;
+    });
+    return list;
+  }, [reports, kind, query, statusFilter, sort]);
+
+  return (
+    <div className="mb-10">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <Icon className={cn("size-4", accentClass)} />
+          <h2 className="text-sm font-semibold text-text-primary">{title}</h2>
+          <span className="text-xs text-text-tertiary">({reports.filter((r) => r.kind === kind).length})</span>
+        </div>
+        {canGenerate && (
+          <Button size="sm" onClick={onGenerate} loading={generating} disabled={generating}>
+            <ClipboardList className="size-3.5" /> {generateLabel}
+          </Button>
+        )}
+        {!canGenerate && disabledReason && <span className="text-xs text-text-tertiary">{disabledReason}</span>}
+      </div>
+
+      {reports.filter((r) => r.kind === kind).length === 0 ? (
+        <div className="rounded-lg border border-dashed border-border-subtle bg-bg-surface px-4 py-6 text-center text-sm text-text-tertiary">
+          No {title.toLowerCase()} generated yet.
+        </div>
+      ) : (
+        <>
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-2.5 top-1/2 size-3.5 -translate-y-1/2 text-text-tertiary" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search by title or author…"
+                className="w-56 rounded-md border border-border-strong py-1.5 pl-8 pr-2.5 text-xs focus:border-accent-primary focus:outline-none"
+              />
+            </div>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
+              className="rounded-md border border-border-strong px-2 py-1.5 text-xs focus:border-accent-primary focus:outline-none"
+            >
+              <option value="all">All statuses</option>
+              <option value="generated">Generated</option>
+              <option value="failed">Failed</option>
+            </select>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortMode)}
+              className="rounded-md border border-border-strong px-2 py-1.5 text-xs focus:border-accent-primary focus:outline-none"
+            >
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </div>
+
+          <div className="overflow-hidden rounded-lg border border-border-subtle bg-bg-surface">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border-subtle text-left text-xs font-semibold uppercase tracking-wide text-text-tertiary">
+                  <th className="px-4 py-2.5">Title</th>
+                  <th className="px-4 py-2.5">Status</th>
+                  <th className="px-4 py-2.5">Generated</th>
+                  <th className="px-4 py-2.5">Highlights</th>
+                  <th className="px-4 py-2.5" />
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((r) => (
+                  <tr key={r.id} className="border-b border-border-subtle last:border-0 hover:bg-bg-surface-sunken">
+                    <td className="px-4 py-3 text-text-primary">{r.title}</td>
+                    <td className="px-4 py-3">
+                      <StatusBadge tone={r.status === "generated" ? "confirmed" : "blocked"}>{r.status}</StatusBadge>
+                    </td>
+                    <td className="px-4 py-3 text-text-tertiary">
+                      {formatDateTime(r.generatedAt)} · {r.generatedBy}
+                    </td>
+                    <td className="px-4 py-3 text-xs text-text-tertiary">
+                      {Object.entries(r.summary).map(([k, v]) => (
+                        <span key={k} className="mr-2 whitespace-nowrap">
+                          <span className="font-medium text-text-secondary">{k}:</span> {v}
+                        </span>
+                      ))}
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <Button variant="ghost" size="sm" onClick={() => setPreviewing(r)} title="Preview">
+                          <Eye className="size-3.5" />
+                        </Button>
+                        <Button variant="ghost" size="sm" onClick={() => printReportHTML(r.html)} title="Download">
+                          <Download className="size-3.5" />
+                        </Button>
+                        {canManage && (
+                          <>
+                            <Button variant="ghost" size="sm" onClick={() => onRegenerate(r)} title="Regenerate" disabled={generating}>
+                              <RefreshCw className="size-3.5" />
+                            </Button>
+                            <Button variant="ghost" size="sm" onClick={() => setConfirmDelete(r)} title="Delete">
+                              <Trash2 className="size-3.5 text-status-insufficient" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+                {filtered.length === 0 && (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-6 text-center text-sm text-text-tertiary">
+                      No reports match this search/filter.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
+      <Dialog open={previewing != null} onOpenChange={(v) => !v && setPreviewing(null)}>
+        <DialogContent size="xl">
+          <DialogHeader>
+            <DialogTitle className="flex items-center justify-between gap-2">
+              <span>{previewing?.title}</span>
+              {previewing && (
+                <Button size="sm" onClick={() => previewIframeRef.current?.contentWindow?.print()}>
+                  <Download className="size-3.5" /> Download PDF
+                </Button>
+              )}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="h-[75vh] px-6 pb-6">
+            {previewing && (
+              <iframe ref={previewIframeRef} srcDoc={previewing.html} className="h-full w-full rounded-md border border-border-subtle bg-white" title={previewing.title} />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={confirmDelete != null} onOpenChange={(v) => !v && setConfirmDelete(null)}>
+        <DialogContent size="sm">
+          <DialogHeader>
+            <DialogTitle>Delete &quot;{confirmDelete?.title}&quot;?</DialogTitle>
+          </DialogHeader>
+          <div className="px-6 pb-2 text-sm text-text-secondary">This can&apos;t be undone. The generated report file will be permanently removed.</div>
+          <div className="flex justify-end gap-2 px-6 pb-6 pt-4">
+            <Button variant="ghost" onClick={() => setConfirmDelete(null)}>Cancel</Button>
+            <Button
+              variant="destructive"
+              onClick={() => {
+                if (confirmDelete) onDelete(confirmDelete);
+                setConfirmDelete(null);
+              }}
+            >
+              <Trash2 className="size-3.5" /> Delete
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
 export default function ReportsPage() {
   const user = useAuthStore((s) => s.user);
   const sites = useAppStore((s) => s.sites);
   const questionnaireFields = useAppStore((s) => s.questionnaireFields);
   const evidence = useAppStore((s) => s.evidence);
   const frameworks = useAppStore((s) => s.frameworks);
+  const reports = useAppStore((s) => s.reports);
+  const saveReport = useAppStore((s) => s.saveReport);
+  const deleteReport = useAppStore((s) => s.deleteReport);
+  const reconcileCdpAutoLinks = useAppStore((s) => s.reconcileCdpAutoLinks);
 
-  const [generated, setGenerated] = useState(false);
-  const [reportHTML, setReportHTML] = useState<string | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const isAdmin = user?.role === "admin";
+  const actor = user ? { name: user.name, role: user.role } : null;
+  const cdp = frameworks.find((f) => f.name.toLowerCase().includes("cdp"));
+
+  const [generatingPwi, setGeneratingPwi] = useState(false);
+  const [generatingCdp, setGeneratingCdp] = useState(false);
+  const [genError, setGenError] = useState<string | null>(null);
 
   const verifiedFields = questionnaireFields.filter((f) => f.status === "verified");
-  const hasSufficientData = sites.length > 0 && evidence.length > 0;
+  const hasSufficientPwiData = sites.length > 0 && evidence.length > 0;
 
   const siteResults = useMemo(() => sites.map((s) => computeSitePWI(s, questionnaireFields)), [sites, questionnaireFields]);
   const portfolio = useMemo(() => computePortfolioPWI(siteResults), [siteResults]);
@@ -391,132 +645,135 @@ export default function ReportsPage() {
     return min === max ? String(min) : `${min}–${max}`;
   }, [evidence]);
 
-  function generateReport() {
-    const html = buildReportHTML(sites, questionnaireFields, evidence, assessmentPeriod, user?.name ?? "Hydris AI", frameworks);
-    setReportHTML(html);
-    setGenerated(true);
+  async function generatePwiReport(replaceId?: string) {
+    if (!actor) return;
+    setGenError(null);
+    setGeneratingPwi(true);
+    try {
+      const html = buildReportHTML(sites, questionnaireFields, evidence, assessmentPeriod, actor.name, frameworks);
+      const title = `PWI Assessment Report — ${assessmentPeriod}`;
+      const summary: Record<string, string> = {
+        "Portfolio Score": portfolio.value != null ? `${portfolio.value.toFixed(1)}%` : "Unable to calculate",
+        Sites: String(sites.length),
+        "Verified Fields": String(verifiedFields.length),
+      };
+      await saveReport("pwi", title, html, summary, actor, replaceId);
+    } catch (err) {
+      setGenError(err instanceof Error ? err.message : "Could not generate the PWI report.");
+    } finally {
+      setGeneratingPwi(false);
+    }
   }
 
-  function downloadReport() {
-    if (!iframeRef.current?.contentWindow) return;
-    iframeRef.current.contentWindow.print();
+  async function generateCdpReport(replaceId?: string) {
+    if (!actor || !cdp) return;
+    setGenError(null);
+    setGeneratingCdp(true);
+    try {
+      // Trigger: "A report is generated" — reconcile auto-links first so the
+      // report reflects any evidence that already qualifies.
+      await reconcileCdpAutoLinks(actor);
+      const latestCdp = useAppStore.getState().frameworks.find((f) => f.name.toLowerCase().includes("cdp")) ?? cdp;
+      const latestEvidence = useAppStore.getState().evidence;
+      const html = buildCdpReportHTML(latestCdp, latestEvidence, actor.name);
+      const prediction = predictCdpWaterScore(latestCdp);
+      const readyCount = latestCdp.items.filter((i) => i.status === "ready").length;
+      const title = `CDP Water Security Assessment Report — ${new Date().getFullYear()}`;
+      const summary: Record<string, string> = {
+        "Predicted Band": prediction.band,
+        "Questions Ready": `${readyCount}/${latestCdp.items.length}`,
+      };
+      await saveReport("cdp", title, html, summary, actor, replaceId);
+    } catch (err) {
+      setGenError(err instanceof Error ? err.message : "Could not generate the CDP report.");
+    } finally {
+      setGeneratingCdp(false);
+    }
   }
 
   return (
     <div>
       <PageHeader
-        title="PWI Assessment Report"
-        description="Generate a professional, audit-ready PWI report from verified evidence."
-        actions={
-          generated ? (
-            <Button onClick={downloadReport}>
-              <Download className="size-4" /> Download PDF
-            </Button>
-          ) : undefined
-        }
+        title="Reports"
+        description="Generate audit-ready assessment reports from verified evidence — kept separate by assessment type."
       />
 
-      {!generated ? (
-        <div className="space-y-6">
-          {/* Pre-generation summary */}
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {[
-              { label: "Sites", value: sites.length, icon: Droplets, ok: sites.length > 0 },
-              { label: "Evidence Files", value: evidence.length, icon: FileText, ok: evidence.length > 0 },
-              { label: "Verified Fields", value: verifiedFields.length, icon: CheckCircle2, ok: verifiedFields.length > 0 },
-              { label: "Portfolio Score", value: portfolio.value != null ? `${portfolio.value.toFixed(1)}%` : "—", icon: BarChart3, ok: portfolio.value != null },
-            ].map(({ label, value, icon: Icon, ok }) => (
-              <Card key={label}>
-                <CardContent className="py-5">
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-medium text-text-secondary">{label}</p>
-                    <Icon className={cn("size-4", ok ? "text-status-verified" : "text-text-tertiary")} />
-                  </div>
-                  <p className={cn("mt-1 text-2xl font-semibold tabular-nums", ok ? "text-text-primary" : "text-text-tertiary")}>{value}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {!hasSufficientData && (
-            <div className="flex items-start gap-2 rounded-md border border-status-proposed/30 bg-status-proposed-bg px-4 py-3 text-sm text-text-secondary">
-              <AlertTriangle className="mt-0.5 size-4 shrink-0 text-status-proposed" />
-              <span>
-                {sites.length === 0
-                  ? "No sites have been configured. Ask an Admin to add at least one site under Admin → Sites before generating a report."
-                  : "No evidence has been uploaded yet. Upload and verify evidence to generate a meaningful report."}
-              </span>
-            </div>
-          )}
-
-          <div className="flex items-start gap-2 rounded-md border border-ai-advisory/30 bg-ai-advisory-bg px-4 py-3 text-sm text-text-secondary">
-            <Info className="mt-0.5 size-4 shrink-0 text-ai-advisory" />
-            <span>
-              The report is assembled from verified data only. Any sections without sufficient evidence will display
-              <strong className="text-status-insufficient"> "Insufficient Evidence"</strong> or
-              <strong className="text-status-insufficient"> "Unable to Calculate"</strong> — never estimated values.
-            </span>
-          </div>
-
-          <div className="flex gap-3">
-            <Button onClick={generateReport} size="lg">
-              <ClipboardList className="size-4" />
-              {hasSufficientData ? "Generate PWI Assessment Report" : "Generate Report (limited data)"}
-            </Button>
-            {!hasSufficientData && (
-              <p className="self-center text-sm text-text-tertiary">Report will show what's available but sections may be incomplete.</p>
-            )}
-          </div>
-
-          <div className="rounded-lg border border-border-subtle bg-bg-surface p-5">
-            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-text-primary">
-              <Shield className="size-4 text-text-tertiary" /> Report Contents
-            </h3>
-            <div className="grid gap-2 text-xs text-text-secondary sm:grid-cols-2">
-              {[
-                "Cover Page — company, period, date",
-                "Executive Summary — PWI score + key stats",
-                "PWI Score Breakdown — per site, pillar, dimension",
-                "Evidence Summary — every indicator with source",
-                "Assessment Findings — strengths, gaps, risks",
-                "Improvement Roadmap — evidence-grounded actions",
-                "References & Citations — every contributing document",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 className="size-3 shrink-0 text-status-verified" />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between rounded-lg border border-status-verified/30 bg-status-verified-bg px-4 py-3">
-            <div className="flex items-center gap-2 text-sm font-medium text-status-verified">
-              <CheckCircle2 className="size-4" />
-              Report generated — review below, then download as PDF.
-            </div>
-            <div className="flex gap-2">
-              <Button variant="ghost" size="sm" onClick={() => setGenerated(false)}>
-                Regenerate
-              </Button>
-              <Button size="sm" onClick={downloadReport}>
-                <Download className="size-3.5" /> Download PDF
-              </Button>
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-lg border border-border-subtle shadow-sm">
-            <iframe
-              ref={iframeRef}
-              srcDoc={reportHTML ?? ""}
-              className="h-[80vh] w-full bg-white"
-              title="PWI Assessment Report"
-            />
-          </div>
+      {genError && (
+        <div className="mb-4 flex items-start gap-2 rounded-md border border-status-insufficient/30 bg-status-insufficient-bg px-4 py-3 text-sm text-status-insufficient">
+          <AlertTriangle className="mt-0.5 size-4 shrink-0" /> {genError}
         </div>
       )}
+
+      <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {[
+          { label: "Sites", value: sites.length, icon: Droplets, ok: sites.length > 0 },
+          { label: "Evidence Files", value: evidence.length, icon: FileText, ok: evidence.length > 0 },
+          { label: "Verified PWI Fields", value: verifiedFields.length, icon: CheckCircle2, ok: verifiedFields.length > 0 },
+          { label: "Portfolio PWI Score", value: portfolio.value != null ? `${portfolio.value.toFixed(1)}%` : "—", icon: BarChart3, ok: portfolio.value != null },
+        ].map(({ label, value, icon: Icon, ok }) => (
+          <Card key={label}>
+            <CardContent className="py-5">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-medium text-text-secondary">{label}</p>
+                <Icon className={cn("size-4", ok ? "text-status-verified" : "text-text-tertiary")} />
+              </div>
+              <p className={cn("mt-1 text-2xl font-semibold tabular-nums", ok ? "text-text-primary" : "text-text-tertiary")}>{value}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {!hasSufficientPwiData && (
+        <div className="mb-6 flex items-start gap-2 rounded-md border border-status-proposed/30 bg-status-proposed-bg px-4 py-3 text-sm text-text-secondary">
+          <AlertTriangle className="mt-0.5 size-4 shrink-0 text-status-proposed" />
+          <span>
+            {sites.length === 0
+              ? "No sites have been configured. Ask an Admin to add at least one site under Admin → Sites before generating a PWI report."
+              : "No evidence has been uploaded yet. Upload and verify evidence to generate a meaningful PWI report."}
+          </span>
+        </div>
+      )}
+
+      <div className="mb-8 flex items-start gap-2 rounded-md border border-ai-advisory/30 bg-ai-advisory-bg px-4 py-3 text-sm text-text-secondary">
+        <Info className="mt-0.5 size-4 shrink-0 text-ai-advisory" />
+        <span>
+          Reports are assembled from verified data only. Missing sections show
+          <strong className="text-status-insufficient"> &quot;Insufficient Evidence&quot;</strong> or
+          <strong className="text-status-insufficient"> &quot;Unable to Calculate&quot;</strong> — never estimated values.
+        </span>
+      </div>
+
+      <ReportSection
+        kind="pwi"
+        title="PWI Assessment Reports"
+        icon={Shield}
+        accentClass="text-accent-primary"
+        reports={reports}
+        canManage={isAdmin}
+        canGenerate={isAdmin}
+        generateLabel="Generate PWI Report"
+        disabledReason={!isAdmin ? "Only Admins can generate reports." : undefined}
+        generating={generatingPwi}
+        onGenerate={() => generatePwiReport()}
+        onRegenerate={(r) => generatePwiReport(r.id)}
+        onDelete={(r) => actor && deleteReport(r.id, actor)}
+      />
+
+      <ReportSection
+        kind="cdp"
+        title="CDP Assessment Reports"
+        icon={Cloud}
+        accentClass="text-ai-advisory"
+        reports={reports}
+        canManage={isAdmin}
+        canGenerate={isAdmin && !!cdp}
+        generateLabel="Generate CDP Report"
+        disabledReason={!isAdmin ? "Only Admins can generate reports." : !cdp ? "No CDP questionnaire loaded." : undefined}
+        generating={generatingCdp}
+        onGenerate={() => generateCdpReport()}
+        onRegenerate={(r) => generateCdpReport(r.id)}
+        onDelete={(r) => actor && deleteReport(r.id, actor)}
+      />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { getSession } from "@/lib/server/get-session";
 import * as store from "@/lib/server/data-store";
 
 /**
- * Every mutation here requires the Admin role — Store Manager's only write
+ * Every mutation here requires the Admin role — Floor Manager's only write
  * permission is the upload endpoint; Auditor has none. Consolidating these
  * into one action-dispatch endpoint keeps the route count manageable; each
  * action still maps 1:1 to a real, persisted, audit-logged operation in
@@ -37,7 +37,15 @@ export async function POST(request: Request) {
         return NextResponse.json({ data });
       }
       case "validateQuestionnaireField": {
-        const data = await store.validateQuestionnaireField(payload.id as string, actor);
+        const data = await store.validateQuestionnaireField(payload.id as string, actor, payload.correctedValue as number | undefined);
+        return NextResponse.json({ data });
+      }
+      case "bulkValidateQuestionnaireFields": {
+        const data = await store.bulkValidateQuestionnaireFields(payload.fieldIds as string[], actor, payload.edits as Record<string, number> | undefined);
+        return NextResponse.json({ data });
+      }
+      case "bulkRejectQuestionnaireFields": {
+        const data = await store.bulkRejectQuestionnaireFields(payload.fieldIds as string[], actor, payload.reason as string);
         return NextResponse.json({ data });
       }
       case "rejectQuestionnaireField": {
@@ -86,6 +94,28 @@ export async function POST(request: Request) {
       }
       case "resolveGap": {
         const data = await store.resolveGap(payload.gapId as string, actor);
+        return NextResponse.json({ data });
+      }
+      case "saveReport": {
+        const { data, reportId } = await store.saveReport(
+          payload.kind as "pwi" | "cdp",
+          payload.title as string,
+          payload.html as string,
+          payload.summary as Record<string, string>,
+          actor,
+          payload.replaceId as string | undefined
+        );
+        return NextResponse.json({ data, reportId });
+      }
+      case "deleteReport": {
+        const data = await store.deleteReport(payload.reportId as string, actor);
+        return NextResponse.json({ data });
+      }
+      case "reconcileCdpAutoLinks": {
+        // Trigger: "A report is generated" — reconcile evidence auto-links
+        // right before building a CDP report, so the report reflects any
+        // evidence that already qualifies but hasn't been picked up yet.
+        const data = await store.reconcileCdpAutoLinks(actor);
         return NextResponse.json({ data });
       }
       case "addSite": {
